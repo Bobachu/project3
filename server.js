@@ -1,6 +1,5 @@
 const express = require("express");
 // const path = require("path");
-// const logger = require("morgan");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 
@@ -10,10 +9,6 @@ const User = require("./models/User");
 // Initialize Express
 const app = express();
 
-// Configure middleware
-
-// Use morgan logger for logging requests
-// app.use(logger("dev"));
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -24,20 +19,6 @@ app.use(express.static("public"));
 mongoose.connect("mongodb://localhost/userDB", { useNewUrlParser: true });
 
 // Routes
-
-// Route to post our form submission to mongoDB via mongoose
-app.post("/submit", function (req, res) {
-  // Create a new user using req.body
-  User.create(req.body)
-    .then(function (dbUser) {
-      // If saved successfully, send the the new User document to the client
-      res.json(dbUser);
-    })
-    .catch(function (err) {
-      // If an error occurs, send the error to the client
-      res.json(err);
-    });
-});
 
 // Start the server
 app.listen(PORT, function () {
