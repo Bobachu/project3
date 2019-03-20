@@ -1,24 +1,45 @@
 const express = require("express");
-const path = require("path");
+// const path = require("path");
+// const logger = require("morgan");
+const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
+
+// Requiring the `User` model for accessing the `users` collection
+const User = require("./models/User");
+
+// Initialize Express
 const app = express();
 
-// Define middleware here
+// Configure middleware
+
+// Use morgan logger for logging requests
+// app.use(logger("dev"));
+// Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
+// Make public a static folder
+app.use(express.static("public"));
 
-// Define API routes here
+// Connect to the Mongo DB
+mongoose.connect("mongodb://localhost/userDB", { useNewUrlParser: true });
 
-// Send every other request to the React app
-// Define any API routes before this runs
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// Routes
+
+// Route to post our form submission to mongoDB via mongoose
+app.post("/submit", function (req, res) {
+  // Create a new user using req.body
+  User.create(req.body)
+    .then(function (dbUser) {
+      // If saved successfully, send the the new User document to the client
+      res.json(dbUser);
+    })
+    .catch(function (err) {
+      // If an error occurs, send the error to the client
+      res.json(err);
+    });
 });
 
-app.listen(PORT, () => {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
+// Start the server
+app.listen(PORT, function () {
+  console.log("App running on port " + PORT + "!");
 });
