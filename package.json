@@ -19,10 +19,16 @@
     "nodemon": "^1.18.7"
   },
   "dependencies": {
+<<<<<<< HEAD
     "express": "^4.16.4",
     "if-env": "^1.0.4",
     "mongoose": "^5.4.19",
     "path": "^0.12.7",
     "react": "^16.8.4"
+=======
+    "express": "^4.16.3",
+    "if-env": "^1.0.4",
+    "mongoose": "^5.4.19"
+>>>>>>> ccaaae3c3a49aa0813be3a4a1fca52dd5bceee0d
   }
 }
