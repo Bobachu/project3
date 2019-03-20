@@ -29,9 +29,9 @@ app.use(require("./routes"))
 app.post("/submit", function (req, res) {
   // Create a new user using req.body
   User.create(req.body)
-    .then(function (dbUser) {
+    .then(function (gameAdvisor) {
       // If saved successfully, send the the new User document to the client
-      res.json(dbUser);
+      res.json(gameAdvisor);
     })
     .catch(function (err) {
       // If an error occurs, send the error to the client
