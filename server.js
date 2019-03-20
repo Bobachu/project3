@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/userDB", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/gameAdvisor", { useNewUrlParser: true });
 
 // Routes
 
@@ -29,9 +29,9 @@ mongoose.connect("mongodb://localhost/userDB", { useNewUrlParser: true });
 app.post("/submit", function (req, res) {
   // Create a new user using req.body
   User.create(req.body)
-    .then(function (dbUser) {
+    .then(function (gameAdvisor) {
       // If saved successfully, send the the new User document to the client
-      res.json(dbUser);
+      res.json(gameAdvisor);
     })
     .catch(function (err) {
       // If an error occurs, send the error to the client
