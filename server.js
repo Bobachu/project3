@@ -1,5 +1,6 @@
 const express = require("express");
 // const path = require("path");
+const path = require("path");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 
@@ -16,9 +17,10 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/userDB", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/GameAdvisor", { useNewUrlParser: true })
 
-// Routes
+// Define API routes here
+app.use(require("./routes"))
 
 // Start the server
 app.listen(PORT, function () {
