@@ -1,6 +1,5 @@
 const express = require("express");
-// const path = require("path");
-// const logger = require("morgan");
+const path = require("path");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 
@@ -21,9 +20,10 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/userDB", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/GameAdvisor", { useNewUrlParser: true })
 
-// Routes
+// Define API routes here
+app.use(require("./routes"))
 
 // Route to post our form submission to mongoDB via mongoose
 app.post("/submit", function (req, res) {
