@@ -22,8 +22,6 @@ mongoose.connect("mongodb://localhost/GameAdvisor", { useNewUrlParser: true })
 // Define API routes here
 app.use(require("./routes"))
 
-<<<<<<< HEAD
-=======
 // Route to post our form submission to mongoDB via mongoose
 app.post("/submit", function (req, res) {
   // Create a new user using req.body
@@ -38,7 +36,6 @@ app.post("/submit", function (req, res) {
     });
 });
 
->>>>>>> 3a141ded6a79a87ba4f7559e43476d62c45799fb
 // Start the server
 app.listen(PORT, function () {
   console.log("App running on port " + PORT + "!");
