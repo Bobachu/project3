@@ -1,5 +1,3 @@
-var mongoose = require("mongoose");
-
 // Save a reference to the Schema constructor
 var mongoose = require("mongoose");
 
@@ -11,6 +9,7 @@ var UserSchema = new Schema({
     username: {
         type: String,
         trim: true,
+        unique: true,
         required: "Username is required"
     },
     password: {
@@ -28,7 +27,15 @@ var UserSchema = new Schema({
         type: String,
         unique: true,
         match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
-    }
+    },
+
+    // Populate users with the wishlist.
+    wishlist: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Wishlist"
+        }
+    ]
 });
 
 // This creates our model from the above schema, using mongoose's model method
