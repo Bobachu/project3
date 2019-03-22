@@ -1,4 +1,5 @@
 const express = require("express");
+// const path = require("path");
 const path = require("path");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
@@ -9,10 +10,6 @@ const User = require("./models/User");
 // Initialize Express
 const app = express();
 
-// Configure middleware
-
-// Use morgan logger for logging requests
-// app.use(logger("dev"));
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
