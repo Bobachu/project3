@@ -57,13 +57,13 @@ const twitch = axios.create({
   headers: { "Client-ID": client_id }
 });
 
-export default {
-  getStreamer: function(name) {
-    return twitch.get(
-      "https://api.twitch.tv/kraken/search/streams?limit=3&query=final+fantasy+xiv"
-    );
-  }
-};
+// export default {
+//   getStreamer: function(name) {
+//     return twitch.get(
+//       "https://api.twitch.tv/kraken/search/streams?limit=3&query=final+fantasy+xiv"
+//     );
+//   }
+// };
 
 // age ratings
 // https://api-v3.igdb.com/age_ratings

@@ -23,6 +23,12 @@ class Home extends Component {
     });
   };
 
+  randomImg = () => {
+    var randomNumber = Math.floor(Math.random() * 5) + 1;
+    var imgName = "img_" + randomNumber + ".jpg";
+    return "url(" + imgName + ")";
+  };
+
   render() {
     return (
       <div>
@@ -33,8 +39,7 @@ class Home extends Component {
           style={{
             backgroundPosition: "center",
             backgroundSize: "cover",
-            backgroundImage:
-              "url('http://cafe-colette.com/images/cafe-colette-gallery-09.jpg')",
+            backgroundImage: this.randomImg,
             minHeight: 500
           }}
         >
