@@ -1,3 +1,5 @@
 #logoText{
-    text-shadow:3px 3px 0 #444;
+    text-shadow: 4px 4px 8px black;
+    /* font-family: 'Baloo Chettan', cursive; */
+    font-family: 'Press Start 2P', cursive;
 }

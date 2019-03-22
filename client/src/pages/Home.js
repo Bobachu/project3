@@ -13,7 +13,8 @@ class Home extends Component {
     books: [],
     title: "",
     author: "",
-    synopsis: ""
+    synopsis: "",
+    backImg: ""
   };
 
   handleInputChange = event => {
@@ -26,8 +27,12 @@ class Home extends Component {
   randomImg = () => {
     var randomNumber = Math.floor(Math.random() * 5) + 1;
     var imgName = "img_" + randomNumber + ".jpg";
-    document.getElementById("home").style.backgroundImage =
-      "url(/client/public/images/" + imgName + ")";
+    this.setState({ backImg: "url(/images/" + imgName + ")" });
+    console.log(this.state.backImg);
+  };
+
+  componentDidMount() {
+    this.randomImg();
   };
 
   render() {
@@ -40,7 +45,7 @@ class Home extends Component {
           style={{
             backgroundPosition: "center",
             backgroundSize: "cover",
-            // backgroundImage: this.randomImg,
+            backgroundImage: this.state.backImg,
             minHeight: 500
           }}
           onLoad={this.randomImg}
