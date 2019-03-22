@@ -22,6 +22,7 @@ var UserSchema = new Schema({
             },
             "Password should be longer"
         ]
+<<<<<<< HEAD
     },
     email: {
         type: String,
@@ -36,6 +37,9 @@ var UserSchema = new Schema({
             ref: "Wishlist"
         }
     ]
+=======
+    }
+>>>>>>> 308394635f1cadfc4b8c47b47bf8d4f5883f7674
 });
 
 // This creates our model from the above schema, using mongoose's model method
