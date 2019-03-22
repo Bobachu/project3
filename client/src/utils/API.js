@@ -10,6 +10,6 @@ const twitch = axios.create({
 
 export default {
   getStreamer: function(name){
-    return twitch.get("https://api.twitch.tv/kraken/search/channels?query=starcraft");
-  }
+    return twitch.get("https://api.twitch.tv/kraken/search/streams?limit=3&query=final+fantasy+xiv");
+
 };
