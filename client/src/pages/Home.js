@@ -6,7 +6,7 @@ import "./style.css";
 // import { Link } from "react-router-dom";
 // import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
-// import { Input, TextArea, FormBtn } from "../components/Form";
+import { Input, TextArea, FormBtn } from "../components/Form";
 
 class Home extends Component {
   state = {
@@ -14,6 +14,13 @@ class Home extends Component {
     title: "",
     author: "",
     synopsis: ""
+  };
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
   };
 
   render() {
@@ -31,17 +38,17 @@ class Home extends Component {
             minHeight: 500
           }}
         >
-          <div className="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
+          {/* <div className="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
             <span className="w3-tag">Open from 6am to 5pm</span>
-          </div>
+          </div> */}
           <div className="w3-display-middle w3-center">
             <span className="w3-text-white w3-wide w3-jumbo" id="logoText">
               GameAdvisor
             </span>
           </div>
-          <div className="w3-display-bottomright w3-center w3-padding-large">
+          {/* <div className="w3-display-bottomright w3-center w3-padding-large">
             <span className="w3-text-white">15 Adr street, 5015</span>
-          </div>
+          </div> */}
         </header>
         {/* page info and search bar */}
         <div className="w3-container" id="about">
@@ -56,11 +63,13 @@ class Home extends Component {
               veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
               ex ea commodo consequat.
             </p>
-            <p>
-              In addition to our full espresso and brew bar menu, we serve fresh
-              made-to-order breakfast and lunch sandwiches, as well as a
-              selection of sides and salads and other good stuff.
-            </p>
+            <Input
+              value={this.state.title}
+              onChange={this.handleInputChange}
+              name="title"
+              placeholder="Game"
+            />
+            <FormBtn>Search</FormBtn>
             <div className="w3-panel w3-leftbar w3-light-grey">
               <p>
                 <i>
@@ -85,7 +94,7 @@ class Home extends Component {
         </div>
         {/* top games section */}
         <div className="w3-container" id="menu">
-          <div className="w3-content" style={{maxWidth:700}}>
+          <div className="w3-content" style={{ maxWidth: 700 }}>
             <h5 className="w3-center w3-padding-48">
               <span className="w3-tag w3-wide">Current Top Games</span>
             </h5>
