@@ -31,7 +31,7 @@ module.exports = {
           .findOneAndUpdate({ _id: req.params.id }, req.body)
           .then(dbUser => res.json(dbUser))
           .catch(err => res.status(422).json(err));
-      },    
+    },    
 
     // Removes a User
     remove: function(req, res) {
