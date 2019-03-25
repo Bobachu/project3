@@ -1,12 +1,21 @@
 const axios = require("axios");
 
 // // TWitch API credentials
+const gamesURL = {
+   url: "https://api-v3.igdb.com/games/",
+   method: "GET",
+   json: true,
+   headers: {
+       "user-key": "940917f24ab11ddaece60ec17ad01354"
+   },
+};
+
 const client_id = "jbeeh3jlwslrdqeq5reklagles1u78";
 const twitch = axios.create({
-  // baseURL: "https://api.twitch.tv/helix/",
   accept: "application/vnd.twitchtv.v5+json",
-  headers: {"Client-ID": client_id}
+  headers: { "Client-ID": client_id }
 });
+
 
 // twitch video api 
 twitch.get("https://api.twitch.tv/kraken/search/streams?limit=4&query=final+fantasy+xiv").then(function (res) {
@@ -26,8 +35,9 @@ const IDBM = axios.create({
 IDBM.get("https://api-v3.igdb.com/age_ratings/?fields=*").then(function(res){
   console.log(res.data[0].rating);
 });
-// IDBM game name/summary api
-IDBM.get("https://api-v3.igdb.com/games/?search=final+fantasy&fields=name,summary").then(function(res){
+// // IDBM game name/summary api
+IDBM.get("https://api-v3.igdb.com/games/?search=Halo&fields=name,summary").then(function(res){
   console.log(res.data[0]);
 });
 
+ 
