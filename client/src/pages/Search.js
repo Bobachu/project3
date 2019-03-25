@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./style.css";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
+// import { Link } from "react-router-dom";
+// import { Col, Row, Container } from "../components/Grid";
+// import Jumbotron from "../components/Jumbotron";
 // import API from "../utils/API";
 
 class Search extends Component {
@@ -19,12 +19,7 @@ class Search extends Component {
 
   render() {
     return (
-      //     <div class="w3-container">
-      //  <div className="w3-row" id="infoDiv">
-      //  <div className="w3-col w3-container w3-green" id="gameInfo"></div>
-      //  <div className="w3-col w3-container w3-blue" id="rating"></div>
-      //  </div>
-      // </div>
+     
      
       <div class="w3-container w3-grey">
        <br/><br/>
