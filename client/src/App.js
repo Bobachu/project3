@@ -5,7 +5,7 @@ import User from "./pages/User";
 import Search from "./pages/Search";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
-import Footer from "./components/footer";
+import Footer from "./components/Footer";
 
 function App() {
   return (
