@@ -10,10 +10,7 @@ import { Input, TextArea, FormBtn } from "../components/Form";
 
 class Home extends Component {
   state = {
-    books: [],
     title: "",
-    author: "",
-    synopsis: "",
     backImg: ""
   };
 
@@ -38,6 +35,7 @@ class Home extends Component {
   render() {
     return (
       <div>
+        <br/><br/>
         {/* Header image and logo */}
         <header
           className="bgimg w3-display-container w3-grayscale-min"
@@ -106,7 +104,7 @@ class Home extends Component {
         </div>
         {/* top games section */}
         <div className="w3-container" id="topGames">
-          <div className="w3-content" style={{ maxWidth: 700 }}>
+          <div className="w3-content" style={{ maxWidth: 1300 }}>
             <h5 className="w3-center w3-padding-48">
               <span className="w3-tag w3-wide">Current Top Games</span>
             </h5>
