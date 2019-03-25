@@ -105,7 +105,7 @@ class Home extends Component {
           </div>
         </div>
         {/* top games section */}
-        <div className="w3-container" id="menu">
+        <div className="w3-container" id="topGames">
           <div className="w3-content" style={{ maxWidth: 700 }}>
             <h5 className="w3-center w3-padding-48">
               <span className="w3-tag w3-wide">Current Top Games</span>
