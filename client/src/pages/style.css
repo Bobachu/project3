@@ -70,4 +70,41 @@ h6 {
     /* font-family: 'Baloo Chettan', cursive; */
     font-family: 'Press Start 2P', cursive;
 }
+<<<<<<< HEAD
+#gameInfo{
+    /* background-position: "center";
+    background-size: "cover"; */
+    background-color: green;
+    max-width: 66.66%;
+  }
+  #rating{
+    /* background-position: "center";
+    background-size: "cover"; */
+    background-color: blue;
+    max-width: 33.33%;
+  }
+
+#infoDiv {
+    min-height:500px;
+    padding:5px 20px;
+}
+#twitch {
+    min-height:300px;
+    padding:5px 20px;
+}
+#purchase {
+    min-height:300px;
+    padding:5px 20px;
+}
+#gameInfo {
+    min-height:300px;
+    padding:5px 20px;
+    
+}
+#rating {
+    min-height:300px;
+    padding:5px 20px;
+}
+=======
 >>>>>>> e45bc8b89dbb5327b9c1b767608a656176a3a867
+>>>>>>> 397404e4c1335763ad14bcf80b912b0de87ec35d
