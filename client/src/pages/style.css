@@ -4,6 +4,69 @@
     font-family: 'Press Start 2P', cursive;
 }
 
+.userHeading {
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-top: 50px;
+}
+
+.userItems {
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 50px;
+}
+
+.profile-pic {
+    width:  175px;
+    height: 175px;
+    margin-left: 45px;
+}
+
+.fa-trash-alt {
+    color: gray
+}
+
+.title-table {
+    width: 95%;
+}
+
+.trash-btn {
+    padding: 3px;
+    background: transparent;
+    border: none;
+}
+
+.trash-btn :hover{
+    background: transparent;
+    border: none;
+    color: rgb(240, 70, 70);
+    cursor: pointer;
+}
+
+.table-headers {
+    background-color: black;
+    color: white;
+}
+
+.header-2 {
+    background-color: black;
+    color: white;
+    font-weight: 150%;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.w3-table, .w3-ul {
+    width: 93%;
+    margin: 20px;
+}
+
+h6 {
+    font-size: 12px;
+}
+
 #home {
     margin-top: 8px;
 }

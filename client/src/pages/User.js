@@ -1,116 +1,86 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/DeleteBtn";
-import Jumbotron from "../components/Jumbotron";
+import "./style.css";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
 
 class User extends Component {
   state = {
-    books: [],
+    wishlist: [],
     title: "",
-    author: "",
-    synopsis: ""
+    user: "",
   };
 
-  componentDidMount() {
-    this.loadBooks();
-  }
+  // componentDidMount() {
+  //   this.loadBooks();
+  // }
 
-  loadBooks = () => {
-    API.getBooks()
+  loadUser = () => {
+    API.getUser()
+      .then(res => this.setState(this.state.user = res.data))
+      .catch(err => console.log(err));
+  };
+
+  loadWishlist = () => {
+    API.getWishlist()
       .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-      )
+        this.setState({ wishlist: res.data, title: ""}))
       .catch(err => console.log(err));
   };
 
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
-  };
-
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    }
+  removeGame = id => {
+    // API.deleteWishlistItem(id)
+    //   .then(res => this.loadWishlist())
+    //   .catch(err => console.log(err));
+    console.log("You Clicked the Trash Can!")
   };
 
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col size="md-6">
-            <Jumbotron>
-              <h1>What Books Should I Read?</h1>
-            </Jumbotron>
-            <form>
-              <Input
-                value={this.state.title}
-                onChange={this.handleInputChange}
-                name="title"
-                placeholder="Title (required)"
-              />
-              <Input
-                value={this.state.author}
-                onChange={this.handleInputChange}
-                name="author"
-                placeholder="Author (required)"
-              />
-              <TextArea
-                value={this.state.synopsis}
-                onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              />
-              <FormBtn
-                disabled={!(this.state.author && this.state.title)}
-                onClick={this.handleFormSubmit}
-              >
-                Submit Book
-              </FormBtn>
-            </form>
-          </Col>
-          <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>Books On My List</h1>
-            </Jumbotron>
-            {this.state.books.length ? (
-              <List>
-                {this.state.books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
-                      <strong>
-                        {book.title} by {book.author}
-                      </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-          </Col>
-        </Row>
-      </Container>
+      <div className="w3-container">
+        <div className="w3-row w3-padding-48 userHeading">
+          <div className="w3-col m4">
+            {/* User's profile picture */}
+            <img className="profile-pic w3-circle" src={'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'} alt="profile" />
+          </div>
+          <div className="w3-col m8">
+            {/* User's profile info */}
+            <h1>Username</h1>
+            <h6>Joined: 03/20/19</h6>
+            <h4>Hello, welcome to my profile! This is my about me section. Below you can see my wishlist and searched games. Thanks for visiting!</h4>
+          </div>
+        </div>
+        <div className="w3-row userItems">
+          <div className="w3-col m8">
+            <h2 className="w3-center header-2">WISHLIST</h2>
+            <table class="w3-table w3-bordered">
+
+              {/* Hard coded games in wishlist for preview */}
+              <tr>
+                <td className="title-table">Mario Kart 8</td>
+                <td className="remove-table"><button class="trash-btn" onClick={this.removeGame}><i class="fas fa-trash-alt"></i></button></td>
+              </tr>
+              <tr>
+                <td className="title-table">Legend of Zelda</td>
+                <td className="remove-table"><button class="trash-btn" onClick={this.removeGame}><i class="fas fa-trash-alt"></i></button></td>
+              </tr>
+              <tr>
+                <td className="title-table">Rune Factory 5</td>
+                <td className="remove-table"><button class="trash-btn" onClick={this.removeGame}><i class="fas fa-trash-alt"></i></button></td>
+              </tr>
+
+            </table>
+          </div>
+          <div className="w3-col m4">
+            <h2 className="w3-center header-2">RECENTLY SEARCHED</h2>
+            <ul class="w3-ul w3-hoverable">
+            {/* Hard coded recently searched games */}
+              <li>Yoshi's Crafted World</li>
+              <li>Pokemon: Let's Go Eevee!</li>
+              <li>Super Mario Party</li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
     );
   }
 }
