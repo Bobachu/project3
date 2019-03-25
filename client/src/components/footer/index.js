@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="w3-center w3-light-grey w3-padding w3-large">
+    <footer className="w3-center w3-light-teal w3-padding w3-large">
       <p>
         Powered by{" "}
         <a
