@@ -60,7 +60,7 @@ const twitch = axios.create({
 // twitch video api 
 twitch.get("https://api.twitch.tv/kraken/search/streams?limit=3&query=final+fantasy+xiv").then(function (res) {
   // console.log(data);
-  for (i = 0; i < res.data.streams.length; i++){
+  for (let i = 0; i < res.data.streams.length; i++){
     console.log(res.data.streams[i].channel.url);
     }
 });
