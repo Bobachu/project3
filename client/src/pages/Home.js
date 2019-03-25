@@ -10,10 +10,8 @@ import { Input, TextArea, FormBtn } from "../components/Form";
 
 class Home extends Component {
   state = {
-    books: [],
     title: "",
-    author: "",
-    synopsis: ""
+    backImg: ""
   };
 
   handleInputChange = event => {
@@ -26,12 +24,18 @@ class Home extends Component {
   randomImg = () => {
     var randomNumber = Math.floor(Math.random() * 5) + 1;
     var imgName = "img_" + randomNumber + ".jpg";
-    return "url(" + imgName + ")";
+    this.setState({ backImg: "url(/images/" + imgName + ")" });
+    console.log(this.state.backImg);
+  };
+
+  componentDidMount() {
+    this.randomImg();
   };
 
   render() {
     return (
       <div>
+        <br/><br/>
         {/* Header image and logo */}
         <header
           className="bgimg w3-display-container w3-grayscale-min"
@@ -39,9 +43,10 @@ class Home extends Component {
           style={{
             backgroundPosition: "center",
             backgroundSize: "cover",
-            backgroundImage: this.randomImg,
+            backgroundImage: this.state.backImg,
             minHeight: 500
           }}
+          onLoad={this.randomImg}
         >
           {/* <div className="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
             <span className="w3-tag">Open from 6am to 5pm</span>
@@ -98,8 +103,8 @@ class Home extends Component {
           </div>
         </div>
         {/* top games section */}
-        <div className="w3-container" id="menu">
-          <div className="w3-content" style={{ maxWidth: 700 }}>
+        <div className="w3-container" id="topGames">
+          <div className="w3-content" style={{ maxWidth: 1300 }}>
             <h5 className="w3-center w3-padding-48">
               <span className="w3-tag w3-wide">Current Top Games</span>
             </h5>

@@ -5,6 +5,7 @@ import User from "./pages/User";
 import Search from "./pages/Search";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -16,8 +17,10 @@ function App() {
           <Route exact path="/Home" component={Home} />
           <Route exact path="/User/" component={User} />
           <Route exact path="/Search/" component={Search} />
+          <Route exact path="/User/" component={User} />
           <Route component={NoMatch} />
         </Switch>
+        <Footer />
       </div>
     </Router>
   );

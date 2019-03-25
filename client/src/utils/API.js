@@ -12,15 +12,15 @@ const gamesURL = {
 
 const client_id = "jbeeh3jlwslrdqeq5reklagles1u78";
 const twitch = axios.create({
+  // baseURL: "https://api.twitch.tv/helix/",
   accept: "application/vnd.twitchtv.v5+json",
-  headers: { "Client-ID": client_id }
+  headers: {"Client-ID": client_id}
 });
-
 
 // twitch video api 
 twitch.get("https://api.twitch.tv/kraken/search/streams?limit=4&query=final+fantasy+xiv").then(function (res) {
   // console.log(data);
-  for (i = 0; i < res.data.streams.length; i++){
+  for (let i = 0; i < res.data.streams.length; i++){
     console.log(res.data.streams[i].channel.url);
     }
 });
