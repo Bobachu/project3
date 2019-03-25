@@ -64,10 +64,6 @@ class Search extends Component {
           <div class="w3-col m12 w3-center w3-red" id="purchase">Purchase
           </div>
           </div>
-        
-
-
-
 
       </div>
     );
