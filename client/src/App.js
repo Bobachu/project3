@@ -14,10 +14,9 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/Home" component={Home} />
-          <Route exact path="/User/" component={User} />
-          <Route exact path="/Search/" component={Search} />
-          <Route exact path="/User/" component={User} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/user/:username" component={User} />
+          <Route exact path="/search/:game" component={Search} />
           <Route component={NoMatch} />
         </Switch>
         <Footer />

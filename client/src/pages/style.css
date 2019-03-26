@@ -74,13 +74,13 @@ h6 {
 #gameInfo{
     /* background-position: "center";
     background-size: "cover"; */
-    background-color: green;
+    /* background-color: green; */
     max-width: 66.66%;
   }
   #rating{
     /* background-position: "center";
     background-size: "cover"; */
-    background-color: blue;
+    /* background-color: blue; */
     max-width: 33.33%;
   }
 
@@ -104,4 +104,23 @@ h6 {
 #rating {
     min-height:300px;
     padding:5px 20px;
+}
+
+.game-image {
+    width: 300px;
+}
+
+.game-desc {
+    width: 60%;
+}
+
+#age-rating-img {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: 2px solid black;
+    margin-left: 190px;
+}
+
+#game-reviews {
+    margin: auto
 }
