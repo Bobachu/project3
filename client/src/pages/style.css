@@ -1,5 +1,4 @@
-#logoText {
-    text-shadow:3px 3px 0 #444;
+#logoText{
     text-shadow: 0px 0px 30px black;
     /* font-family: 'Baloo Chettan', cursive; */
     font-family: 'Press Start 2P', cursive;
@@ -68,6 +67,10 @@ h6 {
     font-size: 12px;
 }
 
+#home {
+    margin-top: 8px;
+}
+
 #gameInfo{
     /* background-position: "center";
     background-size: "cover"; */
@@ -101,4 +104,12 @@ h6 {
 #rating {
     min-height:300px;
     padding:5px 20px;
+}
+
+.game-image {
+    width: 300px;
+}
+
+.game-desc {
+    width: 60%;
 }

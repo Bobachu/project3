@@ -19,51 +19,62 @@ class Search extends Component {
 
   render() {
     return (
-      //     <div class="w3-container">
-      //  <div className="w3-row" id="infoDiv">
-      //  <div className="w3-col w3-container w3-green" id="gameInfo"></div>
-      //  <div className="w3-col w3-container w3-blue" id="rating"></div>
+      //     <div className="w3-container">
+      //  <div classNameName="w3-row" id="infoDiv">
+      //  <div classNameName="w3-col w3-container w3-green" id="gameInfo"></div>
+      //  <div classNameName="w3-col w3-container w3-blue" id="rating"></div>
       //  </div>
       // </div>
-     
-      <div class="w3-container w3-grey">
-       <br/><br/>
-       
-  
-        <div class="w3-row">
-          <div class="w3-col m1 w3-center w3-grey"></div>
-          <div class="w3-col m1 w3-center"></div>
-          <div class="w3-col m1 w3-center w3-grey"></div>
-          <div class="w3-col m1 w3-center"></div>
-          <div class="w3-col m1 w3-center w3-grey"></div>
-          <div class="w3-col m1 w3-center"></div>
-          <div class="w3-col m1 w3-center w3-grey"></div>
-          <div class="w3-col m1 w3-center"></div>
-          <div class="w3-col m1 w3-center w3-grey"></div>
-          <div class="w3-col m1 w3-center"></div>
-          <div class="w3-col m1 w3-center w3-grey"></div>
-          <div class="w3-col m1 w3-center"></div>
+
+      <div className="w3-container w3-grey">
+        <br /><br />
+
+
+        <div className="w3-row">
+          <div className="w3-col m1 w3-center w3-grey"></div>
+          <div className="w3-col m1 w3-center"></div>
+          <div className="w3-col m1 w3-center w3-grey"></div>
+          <div className="w3-col m1 w3-center"></div>
+          <div className="w3-col m1 w3-center w3-grey"></div>
+          <div className="w3-col m1 w3-center"></div>
+          <div className="w3-col m1 w3-center w3-grey"></div>
+          <div className="w3-col m1 w3-center"></div>
+          <div className="w3-col m1 w3-center w3-grey"></div>
+          <div className="w3-col m1 w3-center"></div>
+          <div className="w3-col m1 w3-center w3-grey"></div>
+          <div className="w3-col m1 w3-center"></div>
         </div>
 
-        <div class="w3-row">
-          <div class="w3-col w3-container m8 l8 w3-yellow" id="gameInfo">
-          
-            <p>This part will occupy 12 columns on a small screen, 8 on a medium screen, and 8 on a large screen.</p>
+        <div className="w3-row">
+          <div className="w3-col w3-container m8 l8 w3-yellow" id="gameInfo">
+            <div className="w3-row">
+              <h2><b>Game Title</b></h2>
+            </div>
+            <div className="w3-row">
+              <div className="w3-col game-image">
+                <img src="https://via.placeholder.com/225x300" alt="game" />
+              </div>
+              <div className="w3-col game-desc">
+                <h4><b>Summary</b></h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra vitae dolor eget consectetur. Donec sapien urna, eleifend id quam vel, porta congue orci. Nulla tincidunt arcu vel congue congue. Mauris semper sed tellus sit amet cursus. Vivamus vel massa sed arcu vehicula consectetur at sed mauris. Nulla facilisi. Aliquam condimentum lacinia eros, a fermentum mauris eleifend eget. Nunc a venenatis metus, eu maximus eros. Maecenas faucibus tortor sed pellentesque convallis. Vestibulum non tristique leo. Aenean et risus ac odio lobortis aliquam vel ac nulla. Mauris eget dolor scelerisque dui convallis tristique quis sit amet turpis.</p>
+                <p><b>Genres: </b>Adventure, Action, Fantasy</p>
+              </div>
+            </div>
           </div>
-          <div class="w3-col w3-container m4 l4" id="rating">
+          <div className="w3-col w3-container m4 l4" id="rating">
             <p>This part will occupy 12 columns on a small screen, 4 on a medium screen, and 4 on a large screen.</p>
             <p>This part will occupy 12 columns on a small screen, 4 on a medium screen, and 4 on a large screen.</p>
           </div>
         </div>
 
-        <div class="w3-row">
-          <div class="w3-col m12 w3-center w3-grey" id="twitch">Twitch
+        <div className="w3-row">
+          <div className="w3-col m12 w3-center w3-grey" id="twitch">Twitch
           </div>
+        </div>
+        <div className="w3-row">
+          <div className="w3-col m12 w3-center w3-red" id="purchase">Purchase
           </div>
-          <div class="w3-row">
-          <div class="w3-col m12 w3-center w3-red" id="purchase">Purchase
-          </div>
-          </div>
+        </div>
 
       </div>
     );
