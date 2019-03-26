@@ -105,7 +105,11 @@ h6 {
     min-height:300px;
     padding:5px 20px;
 }
-
+#compare {
+    width: 50% !important;
+    height: 50%;
+    margin-bottom: 2%;
+}
 .game-image {
     width: 300px;
 }
