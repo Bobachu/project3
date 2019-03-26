@@ -29,7 +29,7 @@ class Nav extends Component {
               onChange={this.handleInputChange}
               name="title"
               placeholder="Game"
-              className="w3-bar-item w3-mobile"
+              className="w3-bar-item w3-mobile w3-round-large"
             />
           {/* </div> */}
           {/* <div className="w3-col s3"> */}
