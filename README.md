@@ -12,7 +12,6 @@ The goal of this project is to help parents understand video game ratings and sc
 * These ratings include for example any sexual content or excessive violence.
 * User accounts
  * Allow users to log in and wishlist games
- * Allow users to manage submitted recipes
 
 ## Technologies used
 * Node and Express web server
@@ -21,8 +20,8 @@ The goal of this project is to help parents understand video game ratings and sc
 * Twitch API
   * Game being played link
   * ESRB rating
-* ?CommonSenseMedia API?
-  * ?CommonSenseMedia Ratings?
+* ~~CommonSenseMedia API~~
+  * ~~CommonSenseMedia Ratings~~
 * Amazon and/or OfferUp API
   * Link for purchasing game
   
