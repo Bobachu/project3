@@ -22,7 +22,7 @@ class Home extends Component {
   };
 
   randomImg = () => {
-    var randomNumber = Math.floor(Math.random() * 5) + 1;
+    var randomNumber = Math.floor(Math.random() * 7) + 1;
     var imgName = "img_" + randomNumber + ".jpg";
     this.setState({ backImg: "url(/images/" + imgName + ")" });
     console.log(this.state.backImg);
@@ -30,12 +30,13 @@ class Home extends Component {
 
   componentDidMount() {
     this.randomImg();
-  };
+  }
 
   render() {
     return (
       <div>
-        <br/><br/>
+        <br />
+        <br />
         {/* Header image and logo */}
         <header
           className="bgimg w3-display-container w3-grayscale-min"
@@ -67,11 +68,11 @@ class Home extends Component {
               <span className="w3-tag w3-wide">About the Site</span>
             </h5>
             <p>
-              The Cafe was founded in blabla by Mr. Smith in lorem ipsum dolor
-              sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-              ex ea commodo consequat.
+              Welcome to GameAdvisor! With this site we hope to provide a tool
+              for parents to get all the information they need to choose what
+              games to buy their children of all ages. Just enter a game name
+              below and you can find out what the game is about, see the rating,
+              and even see some videos of people actually playing the game.
             </p>
             <Input
               value={this.state.title}
@@ -80,26 +81,20 @@ class Home extends Component {
               placeholder="Game"
             />
             <FormBtn>Search</FormBtn>
-            <div className="w3-panel w3-leftbar w3-light-grey">
+            <div className="w3-panel w3-leftbar w3-light-grey w3-center">
               <p>
                 <i>
-                  "Use products from nature for what it's worth - but never too
-                  early, nor too late." Fresh is the new sweet.
+                  Game ratings are a lot like movie ratings, and can even be
+                  almost directly compared. Below is an image that might help
+                  out.
                 </i>
               </p>
-              <p>Chef, Coffeeist and Owner: Liam Brown</p>
+              <img
+                src="/images/comparison.png"
+                className="w3-margin-top"
+                id="compare"
+              />
             </div>
-            <img
-              src="/w3images/coffeeshop.jpg"
-              style={{ width: "100%", maxWidth: 1000 }}
-              className="w3-margin-top"
-            />
-            <p>
-              <strong>Opening hours:</strong> everyday from 6am to 5pm.
-            </p>
-            <p>
-              <strong>Address:</strong> 15 Adr street, 5015, NY
-            </p>
           </div>
         </div>
         {/* top games section */}

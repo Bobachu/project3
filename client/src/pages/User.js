@@ -4,13 +4,13 @@ import API from "../utils/API";
 
 class User extends Component {
   state = {
-    wishlist: [],
-    title: "",
     user: "",
+    wishlist: []
   };
 
   // componentDidMount() {
-  //   this.loadBooks();
+  //   this.loadUser();
+  //   this.loadWishlist();
   // }
 
   loadUser = () => {
@@ -39,7 +39,7 @@ class User extends Component {
         <div className="w3-row w3-padding-48 userHeading">
           <div className="w3-col m4">
             {/* User's profile picture */}
-            <img className="profile-pic w3-circle" src={'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'} alt="profile" />
+            <img className="profile-pic w3-circle" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEJ6nY4Jb-8SFmi1iR4OnFIGzbMOdECbMKiKU4RqKltU4QY35S'} alt="profile" />
           </div>
           <div className="w3-col m8">
             {/* User's profile info */}
