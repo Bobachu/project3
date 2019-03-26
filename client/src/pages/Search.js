@@ -1,49 +1,30 @@
 import React, { Component } from "react";
 import "./style.css";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
-// import API from "../utils/API";
+// import { Link } from "react-router-dom";
+import API from "../utils/API";
 
 class Search extends Component {
   state = {
-    book: {}
+    game: ""
   };
+
   // When this component mounts, grab the book with the _id of this.props.match.params.id
   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
-  // componentDidMount() {
+  componentDidMount() {
+
+    API.searchGame()
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   //   API.getBook(this.props.match.params.id)
   //     .then(res => this.setState({ book: res.data }))
   //     .catch(err => console.log(err));
-  // }
+  }
 
   render() {
     return (
-      //     <div className="w3-container">
-      //  <div classNameName="w3-row" id="infoDiv">
-      //  <div classNameName="w3-col w3-container w3-green" id="gameInfo"></div>
-      //  <div classNameName="w3-col w3-container w3-blue" id="rating"></div>
-      //  </div>
-      // </div>
 
       <div className="w3-container w3-margin">
         <br /><br />
-
-
-        {/* <div className="w3-row">
-          <div className="w3-col m1 w3-center w3-grey"></div>
-          <div className="w3-col m1 w3-center"></div>
-          <div className="w3-col m1 w3-center w3-grey"></div>
-          <div className="w3-col m1 w3-center"></div>
-          <div className="w3-col m1 w3-center w3-grey"></div>
-          <div className="w3-col m1 w3-center"></div>
-          <div className="w3-col m1 w3-center w3-grey"></div>
-          <div className="w3-col m1 w3-center"></div>
-          <div className="w3-col m1 w3-center w3-grey"></div>
-          <div className="w3-col m1 w3-center"></div>
-          <div className="w3-col m1 w3-center w3-grey"></div>
-          <div className="w3-col m1 w3-center"></div>
-        </div> */}
 
         <div className="w3-row">
           <div className="w3-col w3-container m8 l8" id="gameInfo">
