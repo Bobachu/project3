@@ -51,7 +51,8 @@ export default {
 
   // Searches for streamers playing on Twitch API
   searchTwitch: function() {
-    return twitch.get("https://api.twitch.tv/kraken/search/streams?limit=3&query=assassin+creed+odyssey")
+    // return twitch.get("https://api.twitch.tv/kraken/search/streams?limit=3&query=assassin+creed+odyssey")
+    return axios.get("/api/data/twitch");
   },
 
   // Get a user and their wishlist?
