@@ -1,5 +1,6 @@
 const axios = require("axios");
 
+<<<<<<< HEAD
 // // TWitch API credentials
 const gamesURL = {
   url: "https://api-v3.igdb.com/games/",
@@ -18,6 +19,8 @@ const twitch = axios.create({
   headers: { "Client-ID": client_id }
 });
 
+=======
+>>>>>>> 2e18602d9dbc6373046389c388f6793a7669ba88
 export default {
   // Searches for a game using the Giant Bomb API
   searchGame: function() {
