@@ -9,8 +9,7 @@ class Search extends Component {
     cover: "",
     overview: "",
     ageRating: "",
-    twitchLink: [],
-    twitchPreview: [],
+    twitchData: [],
   };
 
   // When this component mounts, grab the book with the _id of this.props.match.params.id
@@ -28,7 +27,19 @@ class Search extends Component {
       .catch(err => console.log(err));
 
     API.searchTwitch()
-      .then(res => console.log(res))
+      .then(res => {
+        let data = [];
+        res.data.streams.forEach(elem => {
+          data.push({
+            link: elem.channel.url,
+            preview: elem.preview.medium
+          })
+        })
+        console.log(data);
+        this.setState({
+          twitchData: data
+        });
+      })
       .catch(err => console.log(err));
 
   };
@@ -51,7 +62,9 @@ class Search extends Component {
               <div className="w3-col game-desc">
                 <h4><b>Overview</b></h4>
                 <p>{this.state.overview}</p>
-                <p><b>Genres: </b>{this.state.genres}</p>
+
+                {/* <p><b>Genres: </b>{this.state.genres}</p> */}
+
               </div>
             </div>
           </div>
@@ -78,11 +91,11 @@ class Search extends Component {
         </div>
 
         <div className="w3-row">
-          <h2 className="header-2 w3-center m3">TWITCH STREAMS</h2>
+          <h2 className="header-2 w3-center m3">SEE THE GAME IN ACTION</h2>
           <div className="w3-col m12 w3-center" id="twitch">
-            {/* <a href={this.twitchLink[0]}><img src={this.twitchPreview[0]} alt="twitch stream"/></a>
-            <a href={this.twitchLink[1]}><img src={this.twitchPreview[1]} alt="twitch stream"/></a>
-            <a href={this.twitchLink[2]}><img src={this.twitchPreview[2]} alt="twitch stream"/></a> */}
+            {this.state.twitchData.map(twitch => (
+              <a href={twitch.link} target="_blank"><img className="twitch-preview" src={twitch.preview} alt="Twitch Stream Preview" /></a>
+            ))}
           </div>
         </div>
 
