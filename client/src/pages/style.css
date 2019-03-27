@@ -3,7 +3,12 @@
     /* font-family: 'Baloo Chettan', cursive; */
     font-family: 'Press Start 2P', cursive;
 }
-
+.w3-display-left {
+    margin-left: 25%;
+}
+.w3-display-right {
+    margin-right: 25%;
+}
 .userHeading {
     margin-left: 300px;
     margin-right: 300px;

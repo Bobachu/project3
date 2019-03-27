@@ -22,7 +22,7 @@ class Home extends Component {
   };
 
   randomImg = () => {
-    var randomNumber = Math.floor(Math.random() * 7) + 1;
+    var randomNumber = Math.floor(Math.random() * 10) + 1;
     var imgName = "img_" + randomNumber + ".jpg";
     this.setState({ backImg: "url(/images/" + imgName + ")" });
     console.log(this.state.backImg);
@@ -80,7 +80,7 @@ class Home extends Component {
               name="title"
               placeholder="Game"
             />
-            <FormBtn>Search</FormBtn>
+            <FormBtn style={{marginTop: 10}} onClick={this.searchesGame}>Search</FormBtn>
             <div className="w3-panel w3-leftbar w3-light-grey w3-center">
               <p>
                 <i>
