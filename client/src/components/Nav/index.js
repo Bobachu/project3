@@ -6,6 +6,8 @@ import "./nav.css";
 class Nav extends Component {
   state = {
     title: "",
+    username: "",
+    password: "",
     show: false
   };
 
@@ -25,8 +27,8 @@ class Nav extends Component {
   };
 
   searchesGame = event => {
-    console.log("Searching...?")
-  }
+    console.log("Searching...?");
+  };
 
   render() {
     return (
@@ -50,7 +52,13 @@ class Nav extends Component {
           />
           {/* </div> */}
           {/* <div className="w3-col s3"> */}
-          <FormBtn className="w3-bar-item w3-mobile" style={{marginLeft: 10}} onClick={this.searchesGame}>Search</FormBtn>
+          <FormBtn
+            className="w3-bar-item w3-mobile"
+            style={{ marginLeft: 10 }}
+            onClick={this.searchesGame}
+          >
+            Search
+          </FormBtn>
           {/* </div> */}
           {/* <div className="w3-col s3 w3-right"> */}
           <a
@@ -62,15 +70,48 @@ class Nav extends Component {
           </a>
           {/* </div> */}
           <Modal show={this.state.show} handleClose={this.hideModal}>
-          <button className="w3-button w3-xlarge w3-hover-red w3-display-topright" onClick={this.hideModal}>X</button>
-          <br/><br/>
-          <label><b>Username</b></label>
-          <Input/>
-          <br/><br/>
-          <label><b>Password</b></label>
-          <Input/>
-            <button  style={{marginTop: 10}} className="w3-display-left">Login</button>
-            <button  style={{marginTop: 10}} className="w3-display-right">Sign Up</button>
+            <button
+              className="w3-button w3-xlarge w3-hover-red w3-display-topright"
+              onClick={this.hideModal}
+            >
+              X
+            </button>
+            <br />
+            <br />
+            <label>
+              <b>Username</b>
+            </label>
+            <Input
+              value={this.state.username}
+              onChange={this.handleInputChange}
+              name="username"
+              placeholder="Username"
+            />
+            <br />
+            <br />
+            <label>
+              <b>Password</b>
+            </label>
+            <Input
+              value={this.state.password}
+              onChange={this.handleInputChange}
+              name="password"
+              placeholder="Password"
+              type="password"
+            />
+            <button
+              style={{ marginTop: 10 }}
+              className="w3-display-left w3-button w3-teal w3-round-large"
+            >
+              Login
+            </button>
+            <p style={{ marginTop: 40 }}>OR</p>
+            <button
+              style={{ marginTop: 10 }}
+              className="w3-display-right w3-button w3-teal w3-round-large"
+            >
+              Sign Up
+            </button>
           </Modal>
         </div>
       </div>
