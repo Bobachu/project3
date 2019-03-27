@@ -42,10 +42,6 @@ const giant_bomb = axios.create({
 export default {
   // Searches for a game using the Giant Bomb API
   searchGame: function() {
-    // axios.get("/api/giantbomb").then((res)=>{
-    //   console.log(res)
-    // })
-    // return giant_bomb.get("https://www.giantbomb.com/api/games/?api_key=a9a2426d7b1ed60e55fb95133e680218e2aa7a7c&format=json&filter=name:assassin%27s+creed+odyssey&field_list=image,original_game_rating,deck");
     return axios.get("/api/data/giantbomb");
   },
 
