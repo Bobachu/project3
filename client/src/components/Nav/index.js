@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Input, TextArea, FormBtn } from "../Form";
-import "./nav.css"
+import "./nav.css";
 
 class Nav extends Component {
   state = {
@@ -13,6 +13,10 @@ class Nav extends Component {
       [name]: value
     });
   };
+
+  searchesGame = event => {
+    console.log("Searching...?")
+  }
 
   render() {
     return (
@@ -33,7 +37,7 @@ class Nav extends Component {
             />
           {/* </div> */}
           {/* <div className="w3-col s3"> */}
-            <FormBtn className="w3-bar-item w3-mobile">Search</FormBtn>
+            <FormBtn className="w3-bar-item w3-mobile" onClick={this.searchesGame}>Search</FormBtn>
           {/* </div> */}
           {/* <div className="w3-col s3 w3-right"> */}
             <a href="#where" className="w3-button w3-block w3-black w3-bar-item w3-right w3-mobile">

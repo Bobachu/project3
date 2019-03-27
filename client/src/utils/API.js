@@ -1,26 +1,5 @@
 const axios = require("axios");
 
-<<<<<<< HEAD
-// // TWitch API credentials
-const gamesURL = {
-  url: "https://api-v3.igdb.com/games/",
-  method: "GET",
-  json: true,
-  headers: {
-    "user-key": "940917f24ab11ddaece60ec17ad01354"
-  },
-};
-
-const client_id = "jbeeh3jlwslrdqeq5reklagles1u78";
-const twitch = axios.create({
-  // baseURL: "https://api.twitch.tv/helix/",
-  accept: "application/vnd.twitchtv.v5+json",
-  json: true,
-  headers: { "Client-ID": client_id }
-});
-
-=======
->>>>>>> 2e18602d9dbc6373046389c388f6793a7669ba88
 export default {
   // Searches for a game using the Giant Bomb API
   searchGame: function() {
@@ -28,7 +7,7 @@ export default {
   },
 
   // Searches for streamers playing on Twitch API
-  searchTwitch: function() {
+  searchTwitch: function(search) {
     // return twitch.get("https://api.twitch.tv/kraken/search/streams?limit=3&query=assassin+creed+odyssey")
     return axios.get("/api/data/twitch");
   },
