@@ -3,6 +3,7 @@ import "./style.css";
 // import { Link } from "react-router-dom";
 import API from "../utils/API";
 
+
 class Search extends Component {
   state = {
     game: ""
@@ -18,6 +19,10 @@ class Search extends Component {
   //   API.getBook(this.props.match.params.id)
   //     .then(res => this.setState({ book: res.data }))
   //     .catch(err => console.log(err));
+
+  API.searchTwitch()
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   }
 
   render() {
