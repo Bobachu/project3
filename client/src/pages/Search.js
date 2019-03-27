@@ -1,24 +1,37 @@
 import React, { Component } from "react";
 import "./style.css";
-// import { Link } from "react-router-dom";
 import API from "../utils/API";
+
 
 class Search extends Component {
   state = {
-    game: ""
+    title: "",
+    cover: "",
+    overview: "",
+    ageRating: "",
+    twitchLink: [],
+    twitchPreview: [],
   };
 
   // When this component mounts, grab the book with the _id of this.props.match.params.id
-  // e.g. localhost:3000/books/599dcb67f0f16317844583fc
   componentDidMount() {
 
     API.searchGame()
+      .then(res => this.setState(
+        {
+          title: res.data.results[0].name,
+          cover: res.data.results[0].image.small_url,
+          overview: res.data.results[0].deck,
+          ageRating: res.data.results[0].original_game_rating[0].name
+        }
+      ))
+      .catch(err => console.log(err));
+
+    API.searchTwitch()
       .then(res => console.log(res))
       .catch(err => console.log(err));
-  //   API.getBook(this.props.match.params.id)
-  //     .then(res => this.setState({ book: res.data }))
-  //     .catch(err => console.log(err));
-  }
+
+  };
 
   render() {
     return (
@@ -29,22 +42,23 @@ class Search extends Component {
         <div className="w3-row">
           <div className="w3-col w3-container m8 l8" id="gameInfo">
             <div className="w3-row">
-              <h2><b>Game Title</b></h2>
+              <h2><b>{this.state.title}</b></h2>
             </div>
             <div className="w3-row">
               <div className="w3-col game-image">
-                <img src="https://via.placeholder.com/225x300" alt="game" />
+                <img src={this.state.cover} alt="game" width="275" height="365" />
               </div>
               <div className="w3-col game-desc">
                 <h4><b>Overview</b></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra vitae dolor eget consectetur. Donec sapien urna, eleifend id quam vel, porta congue orci. Nulla tincidunt arcu vel congue congue. Mauris semper sed tellus sit amet cursus. Vivamus vel massa sed arcu vehicula consectetur at sed mauris. Nulla facilisi. Aliquam condimentum lacinia eros, a fermentum mauris eleifend eget. Nunc a venenatis metus, eu maximus eros. Maecenas faucibus tortor sed pellentesque convallis. Vestibulum non tristique leo. Aenean et risus ac odio lobortis aliquam vel ac nulla. Mauris eget dolor scelerisque dui convallis tristique quis sit amet turpis.</p>
-                <p><b>Genres: </b>Adventure, Action, Fantasy</p>
+                <p>{this.state.overview}</p>
+                <p><b>Genres: </b>{this.state.genres}</p>
               </div>
             </div>
           </div>
           <div className="w3-col w3-container m4 l4" id="rating">
             {/* Age Rating HERE */}
-            <img id="age-rating-img" src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/ratings/6/63/ESRB-ver2013_E.png?width=325" alt="age rating" width="75" height="110" />
+            {this.state.ageRating}
+            {/* <img id="age-rating-img" src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/ratings/6/63/ESRB-ver2013_E.png?width=325" alt="age rating" width="75" height="110" /> */}
 
             <h2 className="header-2 w3-center m3">REVIEWS</h2>
             <table id="game-reviews" className="w3-table">
@@ -55,9 +69,9 @@ class Search extends Component {
                 <th className="w3-center">GameStop</th>
               </tr>
               <tr>
-                <td className="w3-center">72/100</td>
-                <td className="w3-center">8/10</td>
-                <td className="w3-center">7.5/10</td>
+                <td className="w3-center">N/A</td>
+                <td className="w3-center">N/A</td>
+                <td className="w3-center">N/A</td>
               </tr>
             </table>
           </div>
@@ -66,13 +80,18 @@ class Search extends Component {
         <div className="w3-row">
           <h2 className="header-2 w3-center m3">TWITCH STREAMS</h2>
           <div className="w3-col m12 w3-center" id="twitch">
+            {/* <a href={this.twitchLink[0]}><img src={this.twitchPreview[0]} alt="twitch stream"/></a>
+            <a href={this.twitchLink[1]}><img src={this.twitchPreview[1]} alt="twitch stream"/></a>
+            <a href={this.twitchLink[2]}><img src={this.twitchPreview[2]} alt="twitch stream"/></a> */}
           </div>
         </div>
-        <div className="w3-row">
+
+        {/* Future Dev: Purchase Links Below */}
+        {/* <div className="w3-row">
           <h2 className="header-2 w3-center m3">PURCHASE AT</h2>
           <div className="w3-col m12 w3-center" id="purchase">
           </div>
-        </div>
+        </div> */}
 
       </div>
     );

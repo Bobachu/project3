@@ -80,7 +80,7 @@ class Home extends Component {
               name="title"
               placeholder="Game"
             />
-            <FormBtn>Search</FormBtn>
+            <FormBtn style={{marginTop: 10}} onClick={this.searchesGame}>Search</FormBtn>
             <div className="w3-panel w3-leftbar w3-light-grey w3-center">
               <p>
                 <i>

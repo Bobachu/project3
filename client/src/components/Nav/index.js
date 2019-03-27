@@ -24,6 +24,10 @@ class Nav extends Component {
     });
   };
 
+  searchesGame = event => {
+    console.log("Searching...?")
+  }
+
   render() {
     return (
       <div className="w3-top">
@@ -46,7 +50,7 @@ class Nav extends Component {
           />
           {/* </div> */}
           {/* <div className="w3-col s3"> */}
-          <FormBtn className="w3-bar-item w3-mobile" style={{marginLeft: 10}}>Search</FormBtn>
+          <FormBtn className="w3-bar-item w3-mobile" style={{marginLeft: 10}} onClick={this.searchesGame}>Search</FormBtn>
           {/* </div> */}
           {/* <div className="w3-col s3 w3-right"> */}
           <a
