@@ -3,21 +3,22 @@ const axios = require("axios");
 const search = "injustice2";
 const client_id = "jbeeh3jlwslrdqeq5reklagles1u78";
 const twitch = axios.create({
-  // baseURL: "https://api.twitch.tv/helix/",
   accept: "application/vnd.twitchtv.v5+json",
   headers: { "Client-ID": client_id }
 });
 
+const search = "Mario Kart 8";
+
 // Matches with "/api/wishlists"
 router.route("/giantbomb")
-  .get((query, res)=>{
-      console.log("giantbomb");
-      query = search;
-    axios.get("https://www.giantbomb.com/api/games/?api_key=a9a2426d7b1ed60e55fb95133e680218e2aa7a7c&format=json&filter=name:"+ query +"&field_list=image,original_game_rating,deck").then((data)=>{
-        console.log(data.data)
-        res.json(data.data);
-    }).catch(e=>{
-        console.log("THERE WAS AN ERROR WITH THEIR API " + e)
+  .get((query, res) => {
+    console.log("giantbomb");
+    query = search;
+    axios.get("https://www.giantbomb.com/api/games/?api_key=a9a2426d7b1ed60e55fb95133e680218e2aa7a7c&format=json&filter=name:" + query + "&field_list=image,name,genres,original_game_rating,deck&sort=original_release_date:desc&limit=1").then((data) => {
+      console.log(data.data)
+      res.json(data.data);
+    }).catch(e => {
+      console.log("THERE WAS AN ERROR WITH THEIR API " + e)
     })
   });
 
