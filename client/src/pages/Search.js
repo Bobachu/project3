@@ -8,25 +8,28 @@ class Search extends Component {
     title: "",
     cover: "",
     overview: "",
-    ageRating: "",
+    ageRating: [],
     twitchData: [],
     videoUrl: ""
   };
 
   // When this component mounts, grab the book with the _id of this.props.match.params.id
-  componentDidMount() {
-    API.searchGame()
-      .then(res =>
-        this.setState({
+  componentDidMount(props) {
+    var game = window.location.pathname.slice(8); 
+
+    API.searchGame(game)
+      .then(res => 
+         this.setState(
+        {
           title: res.data.results[0].name,
           cover: res.data.results[0].image.small_url,
           overview: res.data.results[0].deck,
-          ageRating: res.data.results[0].original_game_rating[0].name
-        })
-      )
+          // ageRating: res.data.results[0].original_game_rating[0].name
+        }
+      ))
       .catch(err => console.log(err));
 
-    API.searchTwitch()
+    API.searchTwitch(game)
       .then(res => {
         let data = [];
         res.data.streams.forEach(elem => {
@@ -82,6 +85,8 @@ class Search extends Component {
                   <b className="heads">Overview</b>
                 </h4>
                 <p>{this.state.overview}</p>
+                <button className="w3-button w3-round w3-black"><i className="fas fa-info-circle"></i> Get More Info</button>
+                <button className="w3-button w3-round w3-teal"><i className="far fa-list-alt"></i> Add to Wishlist</button>
 
                 {/* <p><b>Genres: </b>{this.state.genres}</p> */}
               </div>

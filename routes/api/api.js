@@ -1,36 +1,31 @@
 const router = require("express").Router();
 const axios = require("axios");
-
 const client_id = "jbeeh3jlwslrdqeq5reklagles1u78";
 const twitch = axios.create({
   accept: "application/vnd.twitchtv.v5+json",
   headers: { "Client-ID": client_id }
 });
 
-const search = "mario kart 8";
-
 // Matches with "/api/wishlists"
-router.route("/giantbomb")
-  .get((query, res) => {
-    console.log("giantbomb");
-    query = search;
-    axios.get("https://www.giantbomb.com/api/games/?api_key=a9a2426d7b1ed60e55fb95133e680218e2aa7a7c&format=json&filter=name:" + query + "&field_list=image,name,original_game_rating,deck&sort=original_release_date:desc&limit=1").then((data) => {
-      // console.log(data.data)
+router.route("/giantbomb/:game")
+  .get((req, res) => {
+    const { game } = req.params;
+    axios.get("https://www.giantbomb.com/api/games/?api_key=a9a2426d7b1ed60e55fb95133e680218e2aa7a7c&format=json&filter=name:" + game + "&field_list=image,name,genres,original_game_rating,deck&sort=original_release_date:desc&limit=1").then((data) => {
+      console.log(data.data)
       res.json(data.data);
     }).catch(e => {
       console.log("THERE WAS AN ERROR WITH THEIR API " + e)
     })
   });
 
-  router.route("/twitch")
-  .get((query, res)=>{
-      console.log("twitch");
-      query = search;
-    twitch.get("https://api.twitch.tv/kraken/search/streams?limit=3&query=" + query).then((data)=>{
-        // console.log(data.data)
-        res.json(data.data);
-    }).catch(e=>{
-        console.log("THERE WAS AN ERROR WITH THEIR API " + e)
+router.route("/twitch/:game")
+  .get((req, res) => {
+    const { game } = req.params;
+    twitch.get("https://api.twitch.tv/kraken/search/streams?limit=3&query=" + game).then((data) => {
+      console.log(data.data)
+      res.json(data.data);
+    }).catch(e => {
+      console.log("THERE WAS AN ERROR WITH THEIR API " + e)
     })
   });
 
@@ -63,7 +58,7 @@ const twitch = axios.create({
   headers: { "Client-ID": client_id }
 });
 
-// twitch video api 
+// twitch video api
 // twitch.get("https://api.twitch.tv/kraken/search/streams?limit=3&query=assassin+creed+odyssey").then(function (res) {
 //   // console.log(data);
 //   for (let i = 0; i < res.data.streams.length; i++) {

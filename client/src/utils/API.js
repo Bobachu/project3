@@ -2,14 +2,14 @@ const axios = require("axios");
 
 export default {
   // Searches for a game using the Giant Bomb API
-  searchGame: function() {
-    return axios.get("/api/data/giantbomb");
+  searchGame: function(game) {
+    return axios.get("/api/data/giantbomb/" + game);
   },
 
   // Searches for streamers playing on Twitch API
-  searchTwitch: function(search) {
+  searchTwitch: function(game) {
     // return twitch.get("https://api.twitch.tv/kraken/search/streams?limit=3&query=assassin+creed+odyssey")
-    return axios.get("/api/data/twitch");
+    return axios.get("/api/data/twitch/" + game);
   },
 
   // Get a user and their wishlist?

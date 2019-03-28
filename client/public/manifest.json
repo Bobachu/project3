@@ -1,9 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "GameAdvisor",
+  "name": "GameAdvisor",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "https://www.favicon.cc/logo3d/677203.png",
       "sizes": "192x192",
       "type": "image/png"
     }

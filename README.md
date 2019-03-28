@@ -8,10 +8,12 @@ The goal of this project is to help parents understand video game ratings and sc
 ## MVP
 * Easy to use, video games for dummies format.
 * Upon entering a game title the user will see a game information and box art as well as links to live 'twitch video' of the actual game.
-* The user will also recieve the 'ESRB' and 'commonsensemedia' ratings for each game. 
-* These ratings include for example any sexual content or excessive violence.
+* The user will also recieve the 'ESRB' ~~and 'commonsensemedia'~~ ratings for each game. 
+* ~~These ratings include for example any sexual content or excessive violence.~~
+* Links to twitch streams of the searched game will be displayed as thumnails
+  * clicking on the thumbnail pops up a modal with the video
 * User accounts
- * Allow users to log in and wishlist games
+  * Allow users to log in and wishlist games
 
 ## Technologies used
 * Node and Express web server
@@ -19,11 +21,12 @@ The goal of this project is to help parents understand video game ratings and sc
 
 * Twitch API
   * Game being played link
+* GiantBomb API
+  * game summary
+  * box art
   * ESRB rating
 * ~~CommonSenseMedia API~~
   * ~~CommonSenseMedia Ratings~~
-* Amazon and/or OfferUp API
-  * Link for purchasing game
   
 * React for rendering the site
 * Heroku for site deployment
@@ -36,6 +39,10 @@ The goal of this project is to help parents understand video game ratings and sc
 
 * Create a user review rating system
 * Link to purchase games.
+* Pull certain info from the IGDB api to make the information more robust
+  * Summary
+  * Genres
+  * 
 
 
 #### For help and support

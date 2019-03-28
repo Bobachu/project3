@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 import "./style.css";
-// import DeleteBtn from "../components/DeleteBtn";
-// import Jumbotron from "../components/Jumbotron";
-// import API from "../utils/API";
-// import { Link } from "react-router-dom";
-// import { Col, Row, Container } from "../components/Grid";
-// import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { Input, FormBtn } from "../components/Form";
+const axios = require("axios");
 
 class Home extends Component {
   state = {
     title: "",
-    backImg: ""
+    backImg: "",
+    table: []
+
   };
 
   handleInputChange = event => {
@@ -21,6 +18,8 @@ class Home extends Component {
     });
   };
 
+
+
   randomImg = () => {
     var randomNumber = Math.floor(Math.random() * 10) + 1;
     var imgName = "img_" + randomNumber + ".jpg";
@@ -28,7 +27,22 @@ class Home extends Component {
     console.log(this.state.backImg);
   };
 
+  searchesGame = () => {
+    console.log(this.state.title);
+    window.location.assign("/search/" + this.state.title);
+   // return (
+    //   <Link to={"/search/" + this.state.title} />
+    // ) 
+  };
+
   componentDidMount() {
+    //axios get 
+    axios.get("api/gamerankings")
+      .then(res => {
+        const tableData = res.data;
+        this.setState({ table: tableData });
+      })
+
     this.randomImg();
   }
 
@@ -80,7 +94,8 @@ class Home extends Component {
               name="title"
               placeholder="Game"
             />
-            <FormBtn style={{marginTop: 10}} onClick={this.searchesGame}>Search</FormBtn>
+            <FormBtn style={{ marginTop: 10 }} onClick={this.searchesGame}>Search</FormBtn>
+
             <div className="w3-panel w3-leftbar w3-light-grey w3-center">
               <p>
                 <i>
@@ -93,53 +108,44 @@ class Home extends Component {
                 src="/images/comparison.png"
                 className="w3-margin-top"
                 id="compare"
+                alt="comparison"
               />
             </div>
           </div>
         </div>
         {/* top games section */}
-        <div className="w3-container" id="topGames">
-          <div className="w3-content" style={{ maxWidth: 1300, paddingBottom: 20}}>
-            <h5 className="w3-center w3-padding-48">
-              <span className="w3-tag w3-wide heads">Current Top Games</span>
+        <div className="w3-container w3-center" id="topGames">
+          <div className="w3-content" style={{ maxWidth: 1300 }}>
+            <h5 className="w3-padding-48">
+              <span className="w3-tag w3-wide">Current Top Games</span>
+
             </h5>
 
-            <div id="Eat" className="w3-container menu w3-padding-48 w3-card">
-              <h5>Bread Basket</h5>
-              <p className="w3-text-grey">
-                Assortment of fresh baked fruit breads and muffins 5.50
-              </p>
-              <br />
+            <div className=" w3-center w3-container menu w3-padding-48 w3-card w3-table">
+              <table className="w3-center">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Last Month</th>
+                    <th>Title</th>
+                    <th>Publisher</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.table.map(table => <tr><td>{table.rank}</td>       <td>{table.rankLastMonth}</td><td>{table.title}</td><td>{table.publisher}</td></tr>)}
+                </tbody>
+              </table>
 
-              <h5>Honey Almond Granola with Fruits</h5>
-              <p className="w3-text-grey">
-                Natural cereal of honey toasted oats, raisins, almonds and dates
-                7.00
-              </p>
-              <br />
 
-              <h5>Belgian Waffle</h5>
-              <p className="w3-text-grey">
-                Vanilla flavored batter with malted flour 7.50
-              </p>
-              <br />
-
-              <h5>Scrambled eggs</h5>
-              <p className="w3-text-grey">
-                Scrambled eggs, roasted red pepper and garlic, with green onions
-                7.50
-              </p>
-              <br />
-
-              <h5>Blueberry Pancakes</h5>
-              <p className="w3-text-grey">
-                With syrup, butter and lots of berries 8.50
-              </p>
             </div>
+
           </div>
         </div>
       </div>
+
+
     );
+
   }
 }
 
