@@ -1,7 +1,14 @@
+iframe{
+    width: 100% !important;
+    height: 75% !important;
+}
 #logoText{
     text-shadow: 0px 0px 30px black;
     /* font-family: 'Baloo Chettan', cursive; */
     font-family: 'Press Start 2P', cursive;
+}
+.heads{
+    font-family: 'McLaren', cursive;
 }
 .w3-display-left {
     margin-left: 25%;
@@ -138,6 +145,12 @@ h6 {
     margin: 20px;
     border: 5px solid black;
 }
+@media only screen and (max-width: 700px) {
+    #logoText {
+        font-size: 35px !important;
+    }
+    
+  }
 
 .w3-round {
     margin: 5px;
