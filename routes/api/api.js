@@ -7,15 +7,15 @@ const twitch = axios.create({
   headers: { "Client-ID": client_id }
 });
 
-const search = "Mario Kart 8";
+const search = "mario kart 8";
 
 // Matches with "/api/wishlists"
 router.route("/giantbomb")
   .get((query, res) => {
     console.log("giantbomb");
     query = search;
-    axios.get("https://www.giantbomb.com/api/games/?api_key=a9a2426d7b1ed60e55fb95133e680218e2aa7a7c&format=json&filter=name:" + query + "&field_list=image,name,genres,original_game_rating,deck&sort=original_release_date:desc&limit=1").then((data) => {
-      console.log(data.data)
+    axios.get("https://www.giantbomb.com/api/games/?api_key=a9a2426d7b1ed60e55fb95133e680218e2aa7a7c&format=json&filter=name:" + query + "&field_list=image,name,original_game_rating,deck&sort=original_release_date:desc&limit=1").then((data) => {
+      // console.log(data.data)
       res.json(data.data);
     }).catch(e => {
       console.log("THERE WAS AN ERROR WITH THEIR API " + e)
@@ -27,7 +27,7 @@ router.route("/giantbomb")
       console.log("twitch");
       query = search;
     twitch.get("https://api.twitch.tv/kraken/search/streams?limit=3&query=" + query).then((data)=>{
-        console.log(data.data)
+        // console.log(data.data)
         res.json(data.data);
     }).catch(e=>{
         console.log("THERE WAS AN ERROR WITH THEIR API " + e)

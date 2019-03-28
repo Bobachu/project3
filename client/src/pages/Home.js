@@ -65,7 +65,7 @@ class Home extends Component {
         <div className="w3-container" id="about">
           <div className="w3-content" style={{ maxWidth: 1300 }}>
             <h5 className="w3-center w3-padding-64">
-              <span className="w3-tag w3-wide">About the Site</span>
+              <span className="w3-tag w3-wide heads">About the Site</span>
             </h5>
             <p>
               Welcome to GameAdvisor! With this site we hope to provide a tool
@@ -99,9 +99,9 @@ class Home extends Component {
         </div>
         {/* top games section */}
         <div className="w3-container" id="topGames">
-          <div className="w3-content" style={{ maxWidth: 1300 }}>
+          <div className="w3-content" style={{ maxWidth: 1300, paddingBottom: 20}}>
             <h5 className="w3-center w3-padding-48">
-              <span className="w3-tag w3-wide">Current Top Games</span>
+              <span className="w3-tag w3-wide heads">Current Top Games</span>
             </h5>
 
             <div id="Eat" className="w3-container menu w3-padding-48 w3-card">

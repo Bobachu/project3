@@ -11,7 +11,7 @@ const Modal = ({ show, children }) => {
     >
       <div
         className="w3-modal-content w3-black w3-card-4 w3-animate-zoom"
-        style={{maxWidth: 600, height: 600, paddingLeft: 20, paddingRight: 20, paddingTop:50}}
+        style={{maxWidth: 700, height: 500, paddingLeft: 20, paddingRight: 20, paddingTop:30}}
       >
         {children}
       </div>

@@ -100,14 +100,14 @@ class Nav extends Component {
               type="password"
             />
             <button
-              style={{ marginTop: 10 }}
+              style={{ marginTop: 30 }}
               className="w3-display-left w3-button w3-teal w3-round-large"
             >
               Login
             </button>
-            <p style={{ marginTop: 40 }}>OR</p>
+            <p style={{ marginTop: 30 }}>OR</p>
             <button
-              style={{ marginTop: 10 }}
+              style={{ marginTop: 30 }}
               className="w3-display-right w3-button w3-teal w3-round-large"
             >
               Sign Up
