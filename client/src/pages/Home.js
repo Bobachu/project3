@@ -1,12 +1,6 @@
 import React, { Component } from "react";
 import "./style.css";
-// import DeleteBtn from "../components/DeleteBtn";
-// import Jumbotron from "../components/Jumbotron";
-// import API from "../utils/API";
-// import { Link } from "react-router-dom";
-// import { Col, Row, Container } from "../components/Grid";
-// import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { Input, FormBtn } from "../components/Form";
 const axios = require("axios");
 
 class Home extends Component {
@@ -31,6 +25,14 @@ class Home extends Component {
     var imgName = "img_" + randomNumber + ".jpg";
     this.setState({ backImg: "url(/images/" + imgName + ")" });
     console.log(this.state.backImg);
+  };
+
+  searchesGame = () => {
+    console.log(this.state.title);
+    window.location.assign("/search/" + this.state.title);
+   // return (
+    //   <Link to={"/search/" + this.state.title} />
+    // ) 
   };
 
   componentDidMount() {
@@ -102,6 +104,7 @@ class Home extends Component {
                 src="/images/comparison.png"
                 className="w3-margin-top"
                 id="compare"
+                alt="comparison"
               />
             </div>
           </div>

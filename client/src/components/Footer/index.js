@@ -10,6 +10,7 @@ function Footer() {
           title="W3.CSS"
           target="_blank"
           className="w3-hover-text-blue"
+          rel="noopener noreferrer"
         >
           w3.css
         </a>
