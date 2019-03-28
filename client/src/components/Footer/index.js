@@ -11,7 +11,7 @@ function Footer() {
           target="_blank"
           className="w3-hover-text-blue"
         >
-          w3.css
+          Sarah Tiffany Bob and Paul
         </a>
       </p>
     </footer>

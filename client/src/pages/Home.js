@@ -13,8 +13,8 @@ class Home extends Component {
   state = {
     title: "",
     backImg: "",
-    tables: ""
-    
+    table: []
+
   };
 
   handleInputChange = event => {
@@ -34,9 +34,13 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    
-     
-    
+    //axios get 
+    axios.get("api/gamerankings")
+      .then(res => {
+        const tableData = res.data;
+        this.setState({ table: tableData });
+      })
+
     this.randomImg();
   }
 
@@ -89,7 +93,7 @@ class Home extends Component {
               placeholder="Game"
             />
             <FormBtn style={{ marginTop: 10 }} onClick={this.searchesGame}>Search</FormBtn>
-            
+
             <div className="w3-panel w3-leftbar w3-light-grey w3-center">
               <p>
                 <i>
@@ -107,49 +111,37 @@ class Home extends Component {
           </div>
         </div>
         {/* top games section */}
-        <div className="w3-container" id="topGames">
+        <div className="w3-container w3-center" id="topGames">
           <div className="w3-content" style={{ maxWidth: 1300 }}>
-            <h5 className="w3-center w3-padding-48">
+            <h5 className="w3-padding-48">
               <span className="w3-tag w3-wide">Current Top Games</span>
+
             </h5>
-      
-            {/* <Input
-              value={this.state.title}
-              onChange={this.handleInputChange}
-              name="title"
-              placeholder="Game"
-            /> */}
-            <div id="Eat" className="w3-container menu w3-padding-48 w3-card">
-            
-      
-    
+
+            <div className=" w3-center w3-container menu w3-padding-48 w3-card w3-table">
+              <table className="w3-center">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Last Month</th>
+                    <th>Title</th>
+                    <th>Publisher</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.table.map(table => <tr><td>{table.rank}</td>       <td>{table.rankLastMonth}</td><td>{table.title}</td><td>{table.publisher}</td></tr>)}
+                </tbody>
+              </table>
+
+
             </div>
 
           </div>
         </div>
       </div>
-      
-      
+
+
     );
-    
-    // app.get("/api/gamerankings", function (error, res) {
-    //   if (error) {
-    //     console.log(error);
-    //   }
-    //   res.json(res);
-    // });
-    // axios.post('/api/gamerankings', {
-    //   rank: "",
-    //   rankLastMonth: "",
-    //   title: "",
-    //   publisher: ""
-    // })
-    // .then(function (response) {
-    //   console.log(response);
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    // })
 
   }
 }
