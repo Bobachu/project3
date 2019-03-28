@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const axios = require("axios");
-
 const client_id = "jbeeh3jlwslrdqeq5reklagles1u78";
 const twitch = axios.create({
   accept: "application/vnd.twitchtv.v5+json",
