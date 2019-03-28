@@ -16,7 +16,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/user/:username" component={User} />
-          <Route exact path="/search" component={Search} />
+          <Route exact path="/search/:game" component={Search} />
           <Route component={NoMatch} />
         </Switch>
         <Footer />

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, TextArea, FormBtn } from "../Form";
+import { Input, FormBtn } from "../Form";
 import Modal from "../Modal";
 import "./nav.css";
 
@@ -24,12 +24,17 @@ class Nav extends Component {
     });
   };
 
-  searchesGame = event => {
-    console.log("Searching...?")
-  }
+  searchesGame = () => {
+    console.log(this.state.title);
+    window.location.assign("/search/" + this.state.title);
+   // return (
+    //   <Link to={"/search/" + this.state.title} />
+    // ) 
+  };
 
   render() {
     return (
+      <>
       <div className="w3-top">
         <div className="w3-bar w3-row w3-padding w3-black" id="navBar">
           {/* <div className="w3-col s3"> */}
@@ -74,6 +79,7 @@ class Nav extends Component {
           </Modal>
         </div>
       </div>
+      </>
     );
   }
 }
