@@ -21,6 +21,8 @@ class Home extends Component {
     });
   };
 
+ 
+
   randomImg = () => {
     var randomNumber = Math.floor(Math.random() * 7) + 1;
     var imgName = "img_" + randomNumber + ".jpg";

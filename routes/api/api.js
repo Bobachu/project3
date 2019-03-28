@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const axios = require("axios");
-
+const search = "injustice2";
 const client_id = "jbeeh3jlwslrdqeq5reklagles1u78";
 const twitch = axios.create({
   // baseURL: "https://api.twitch.tv/helix/",
@@ -10,9 +10,10 @@ const twitch = axios.create({
 
 // Matches with "/api/wishlists"
 router.route("/giantbomb")
-  .get((req, res)=>{
-      console.log("giantbomb")
-    axios.get("https://www.giantbomb.com/api/games/?api_key=a9a2426d7b1ed60e55fb95133e680218e2aa7a7c&format=json&filter=name:assassin%27s+creed+odyssey&field_list=image,original_game_rating,deck").then((data)=>{
+  .get((query, res)=>{
+      console.log("giantbomb");
+      query = search;
+    axios.get("https://www.giantbomb.com/api/games/?api_key=a9a2426d7b1ed60e55fb95133e680218e2aa7a7c&format=json&filter=name:"+ query +"&field_list=image,original_game_rating,deck").then((data)=>{
         console.log(data.data)
         res.json(data.data);
     }).catch(e=>{
@@ -21,9 +22,10 @@ router.route("/giantbomb")
   });
 
   router.route("/twitch")
-  .get((req, res)=>{
-      console.log("twitch")
-    twitch.get("https://api.twitch.tv/kraken/search/streams?limit=3&query=assassin+creed+odyssey").then((data)=>{
+  .get((query, res)=>{
+      console.log("twitch");
+      query = search;
+    twitch.get("https://api.twitch.tv/kraken/search/streams?limit=3&query=" + query).then((data)=>{
         console.log(data.data)
         res.json(data.data);
     }).catch(e=>{
