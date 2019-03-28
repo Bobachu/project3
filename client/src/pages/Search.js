@@ -8,25 +8,27 @@ class Search extends Component {
     title: "",
     cover: "",
     overview: "",
-    ageRating: "",
+    ageRating: [],
     twitchData: [],
   };
 
   // When this component mounts, grab the book with the _id of this.props.match.params.id
-  componentDidMount() {
+  componentDidMount(props) {
+    var game = window.location.pathname.slice(8); 
 
-    API.searchGame()
-      .then(res => this.setState(
+    API.searchGame(game)
+      .then(res => 
+         this.setState(
         {
           title: res.data.results[0].name,
           cover: res.data.results[0].image.small_url,
           overview: res.data.results[0].deck,
-          ageRating: res.data.results[0].original_game_rating[0].name
+          // ageRating: res.data.results[0].original_game_rating[0].name
         }
       ))
       .catch(err => console.log(err));
 
-    API.searchTwitch()
+    API.searchTwitch(game)
       .then(res => {
         let data = [];
         res.data.streams.forEach(elem => {
@@ -62,6 +64,8 @@ class Search extends Component {
               <div className="w3-col game-desc">
                 <h4><b>Overview</b></h4>
                 <p>{this.state.overview}</p>
+                <button className="w3-button w3-round w3-black"><i className="fas fa-info-circle"></i> Get More Info</button>
+                <button className="w3-button w3-round w3-teal"><i className="far fa-list-alt"></i> Add to Wishlist</button>
 
                 {/* <p><b>Genres: </b>{this.state.genres}</p> */}
 
@@ -94,7 +98,7 @@ class Search extends Component {
           <h2 className="header-2 w3-center m3">SEE THE GAME IN ACTION</h2>
           <div className="w3-col m12 w3-center" id="twitch">
             {this.state.twitchData.map(twitch => (
-              <a href={twitch.link} target="_blank"><img className="twitch-preview" src={twitch.preview} alt="Twitch Stream Preview" /></a>
+              <a href={twitch.link} target="_blank" rel="noopener noreferrer"><img className="twitch-preview" src={twitch.preview} alt="Twitch Stream Preview" /></a>
             ))}
           </div>
         </div>
