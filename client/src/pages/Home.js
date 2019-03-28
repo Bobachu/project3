@@ -7,11 +7,14 @@ import "./style.css";
 // import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
+const axios = require("axios");
 
 class Home extends Component {
   state = {
     title: "",
-    backImg: ""
+    backImg: "",
+    tables: ""
+    
   };
 
   handleInputChange = event => {
@@ -21,7 +24,7 @@ class Home extends Component {
     });
   };
 
- 
+
 
   randomImg = () => {
     var randomNumber = Math.floor(Math.random() * 10) + 1;
@@ -31,6 +34,9 @@ class Home extends Component {
   };
 
   componentDidMount() {
+    
+     
+    
     this.randomImg();
   }
 
@@ -82,7 +88,8 @@ class Home extends Component {
               name="title"
               placeholder="Game"
             />
-            <FormBtn style={{marginTop: 10}} onClick={this.searchesGame}>Search</FormBtn>
+            <FormBtn style={{ marginTop: 10 }} onClick={this.searchesGame}>Search</FormBtn>
+            
             <div className="w3-panel w3-leftbar w3-light-grey w3-center">
               <p>
                 <i>
@@ -105,43 +112,45 @@ class Home extends Component {
             <h5 className="w3-center w3-padding-48">
               <span className="w3-tag w3-wide">Current Top Games</span>
             </h5>
-
+      
+            {/* <Input
+              value={this.state.title}
+              onChange={this.handleInputChange}
+              name="title"
+              placeholder="Game"
+            /> */}
             <div id="Eat" className="w3-container menu w3-padding-48 w3-card">
-              <h5>Bread Basket</h5>
-              <p className="w3-text-grey">
-                Assortment of fresh baked fruit breads and muffins 5.50
-              </p>
-              <br />
-
-              <h5>Honey Almond Granola with Fruits</h5>
-              <p className="w3-text-grey">
-                Natural cereal of honey toasted oats, raisins, almonds and dates
-                7.00
-              </p>
-              <br />
-
-              <h5>Belgian Waffle</h5>
-              <p className="w3-text-grey">
-                Vanilla flavored batter with malted flour 7.50
-              </p>
-              <br />
-
-              <h5>Scrambled eggs</h5>
-              <p className="w3-text-grey">
-                Scrambled eggs, roasted red pepper and garlic, with green onions
-                7.50
-              </p>
-              <br />
-
-              <h5>Blueberry Pancakes</h5>
-              <p className="w3-text-grey">
-                With syrup, butter and lots of berries 8.50
-              </p>
+            
+      
+    
             </div>
+
           </div>
         </div>
       </div>
+      
+      
     );
+    
+    // app.get("/api/gamerankings", function (error, res) {
+    //   if (error) {
+    //     console.log(error);
+    //   }
+    //   res.json(res);
+    // });
+    // axios.post('/api/gamerankings', {
+    //   rank: "",
+    //   rankLastMonth: "",
+    //   title: "",
+    //   publisher: ""
+    // })
+    // .then(function (response) {
+    //   console.log(response);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // })
+
   }
 }
 
