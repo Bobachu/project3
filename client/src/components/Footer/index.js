@@ -12,7 +12,7 @@ function Footer() {
           className="w3-hover-text-blue"
           rel="noopener noreferrer"
         >
-          w3.css
+          Sarah Tiffany Bob and Paul
         </a>
       </p>
     </footer>
