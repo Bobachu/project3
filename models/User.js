@@ -25,14 +25,6 @@ const UserSchema = new Schema({
             "Password should be longer"
         ]
     },
-    bio: {
-        type: String,
-    },
-    email: {
-        type: String,
-        unique: true,
-        match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
-    },
 
     // Populate users with the wishlist.
     wishlist: [
@@ -61,7 +53,7 @@ UserSchema.pre("save", function (next) {
     });
 });
 
-UserSchema.methods.comaparePassword = function (candidatePassword, callback) {
+UserSchema.methods.comparePassword = function (candidatePassword, callback) {
     bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
         if (err) {
             return callback(err);

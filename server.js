@@ -35,12 +35,14 @@ app.get("/", function (req, res) {
 });
 
 // Route to post our form submission to mongoDB via mongoose
-app.post("/submit", function (req, res) {
+app.post("/api/signup", function (req, res) {
   // Create a new user using req.body
+  console.log(req.body);
   User.create(req.body)
-    .then(function (gameAdvisor) {
+    .then(function (dbUser) {
       // If saved successfully, send the the new User document to the client
-      res.json(gameAdvisor);
+      console.log(dbUser);
+      res.json(dbUser);
     })
     .catch(function (err) {
       // If an error occurs, send the error to the client
@@ -48,8 +50,8 @@ app.post("/submit", function (req, res) {
     });
 });
 
-app.post("/login", requireSignin, function (req, res) {
-  console.log(req.user);
+app.post("/api/login", requireSignin, function (req, res) {
+  // console.log(req.user);
   jwt.sign({ sub: req.user.id }, config.secret, function (err, token) {
     res.json({ token });
   });
