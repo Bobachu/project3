@@ -12,6 +12,10 @@ export default {
     return axios.get("/api/data/twitch/" + game);
   },
 
+  searchIgdb: function(game) {
+    return axios.get("/api/data/igdb/" + game);
+  },
+
   // Get a user and their wishlist?
   loadUser: function(username) {
     return axios.get("/api/users/" + username)

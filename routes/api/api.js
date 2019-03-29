@@ -6,6 +6,13 @@ const twitch = axios.create({
   headers: { "Client-ID": client_id }
 });
 
+const user_key = "940917f24ab11ddaece60ec17ad01354"
+const igdb = axios.create({
+  accept: "application/json",
+  headers: {"user-key": user_key,
+	data: "(category = 0 & platforms = [130] & first_release_date > 1420070400)|(category = 0 & platforms = [48] & first_release_date > 1420070400)|(category = 0 & platforms = [49] & first_release_date > 1420070400)|(category = 0 & platforms = [6] & first_release_date > 1420070400)"}
+});
+ 
 // Matches with "/api/wishlists"
 router.route("/giantbomb/:game")
   .get((req, res) => {
@@ -29,16 +36,18 @@ router.route("/twitch/:game")
     })
   });
 
+router.route("/igdb/:game")
+.post((req, res) => {
+    const { game } = req.params;
+    axios.post("https://api-v3.igdb.com/games/?seach=halo" + game).then((data) => {
+      console.log(data.data)
+      res.json(data.data);
+    }).catch(e => {
+      console.log("THERE WAS AN ERROR WITH THEIR API " + e)
+    })
+  });
+
 module.exports = router;
-
-
-
-
-
-
-
-
-
 
 // ######### DEAD CODE - FOR REFERENCE #################
 /*

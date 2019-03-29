@@ -4,6 +4,7 @@ const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 
 const db = require("../models");
+const config = require("../config");
 
 // Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
 passport.use(
@@ -21,12 +22,19 @@ passport.use(
             message: "Incorrect username."
           });
         }
+
+        dbUser.comparePassword(password, (err, isMatch)=>{
+          if(err) {
+            return done(err);
+          }
+
+          if (!isMatch) {
+            return done(null, false, {
+              message: "Incorrect password."
+            });
+          }
+        })
         // If there is a user with the given email, but the password the user gives us is incorrect
-        else if (dbUser.password !== password) {
-          return done(null, false, {
-            message: "Incorrect password."
-          });
-        }
         // If none of the above, return the user
         return done(null, dbUser);
       });
@@ -38,7 +46,7 @@ const jwtOptions = {
   // extract the jwt token we created from the header
   jwtFromRequest: ExtractJwt.fromHeader("authorization"),
   // pass in the jwt secret to decode the token
-  secretOrKey: "kittens"
+  secretOrKey: config.secret
 };
 
 // Create JWT Strategy
