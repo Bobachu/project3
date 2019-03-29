@@ -5,7 +5,7 @@ const requireSignin = passport.authenticate("local", { session: false });
 const requireToken = passport.authenticate("jwt", { session: false });
 const jwt = require("jsonwebtoken");
 // const path = require("path");
-const path = require("path");
+const config = require("./config");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 
@@ -50,7 +50,7 @@ app.post("/submit", function (req, res) {
 
 app.post("/login", requireSignin, function (req, res) {
   console.log(req.user);
-  jwt.sign({ sub: req.user.id }, "kittens", function (err, token) {
+  jwt.sign({ sub: req.user.id }, config.secret, function (err, token) {
     res.json({ token });
   });
   // res.send("You are logged in!");
@@ -65,7 +65,7 @@ app.get("/api/gamerankings", function (req, res) {
   // First, tell the console what server.js is doing
   console.log("\n***********************************\n" +
     "Grabbing every thread name and link\n" +
-    "from reddit's webdev board:" +
+    "from npd's webdev board:" +
     "\n***********************************\n");
 
   // Making a request via axios for "npd"scrape. 
