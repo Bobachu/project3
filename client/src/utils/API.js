@@ -3,7 +3,7 @@ const axios = require("axios");
 export default {
   // Searches for a game using the Giant Bomb API
   searchGame: function(game) {
-    return axios.get("/api/data/giantbomb/" + game);
+    return axios.get("/api/data/giantbomb/" + game) ;
   },
 
   // Searches for streamers playing on Twitch API

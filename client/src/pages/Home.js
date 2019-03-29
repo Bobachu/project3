@@ -8,7 +8,6 @@ class Home extends Component {
     title: "",
     backImg: "",
     table: []
-
   };
 
   handleInputChange = event => {
@@ -17,8 +16,6 @@ class Home extends Component {
       [name]: value
     });
   };
-
-
 
   randomImg = () => {
     var randomNumber = Math.floor(Math.random() * 10) + 1;
@@ -32,16 +29,15 @@ class Home extends Component {
     window.location.assign("/search/" + this.state.title);
     // return (
     //   <Link to={"/search/" + this.state.title} />
-    // ) 
+    // )
   };
 
   componentDidMount() {
-    //axios get 
-    axios.get("api/gamerankings")
-      .then(res => {
-        const tableData = res.data;
-        this.setState({ table: tableData });
-      })
+    //axios get
+    axios.get("api/gamerankings").then(res => {
+      const tableData = res.data;
+      this.setState({ table: tableData });
+    });
 
     this.randomImg();
   }
@@ -94,7 +90,9 @@ class Home extends Component {
               name="title"
               placeholder="Game"
             />
-            <FormBtn style={{ marginTop: 10 }} onClick={this.searchesGame}>Search</FormBtn>
+            <FormBtn style={{ marginTop: 10 }} onClick={this.searchesGame}>
+              Search
+            </FormBtn>
 
             <div className="w3-panel w3-leftbar w3-light-grey w3-center">
               <p>
@@ -118,11 +116,10 @@ class Home extends Component {
           <div className="w3-content" style={{ maxWidth: 1300 }}>
             <h5 className="w3-padding-48">
               <span className="w3-tag w3-wide">Current Top Games</span>
-
             </h5>
 
-            <div className=" w3-center w3-container menu w3-padding-48 w3-card w3-table">
-              <table className="w3-center">
+            <div className=" w3-center w3-container menu w3-padding-48 w3-card w3-center">
+              <table className="w3-table">
                 <thead>
                   <tr>
                     <th>Rank</th>
@@ -132,24 +129,22 @@ class Home extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.state.table.length !== 0 && this.state.table.map(table => (<tr key={table.rank}>
-                    <td>{table.rank}</td>
-                    <td>{table.rankLastMonth}</td>
-                    <td>{table.title}</td><td>{table.publisher}</td>
-                  </tr>))}
+                  {this.state.table.length !== 0 &&
+                    this.state.table.map(table => (
+                      <tr key={table.rank}>
+                        <td>{table.rank}</td>
+                        <td>{table.rankLastMonth}</td>
+                        <td>{table.title}</td>
+                        <td>{table.publisher}</td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
-
-
             </div>
-
           </div>
         </div>
       </div>
-
-
     );
-
   }
 }
 

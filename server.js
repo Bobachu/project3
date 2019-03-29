@@ -66,8 +66,7 @@ app.get("/protected", requireToken, function (req, res) {
 app.get("/api/gamerankings", function (req, res) {
   // First, tell the console what server.js is doing
   console.log("\n***********************************\n" +
-    "Grabbing every thread name and link\n" +
-    "from npd's webdev board:" +
+    "Grabbing current top games" + 
     "\n***********************************\n");
 
   // Making a request via axios for "npd"scrape. 
@@ -99,17 +98,17 @@ app.get("/api/gamerankings", function (req, res) {
             tr.rankLastMonth = $(element).text();
             break;
           case 2:
-            tr.title = $(element).text();
+            tr.title = $(element).text().replace(/\^|\*/, " ");
             break;
           case 3:
             tr.publisher = $(element).text();
             break;
         }
       });
-
       // In the currently selected element, look at its child elements (i.e., its a-tags),
       // then save the values for any "href" attributes that the child elements may have
       results.push(tr);
+      console.log(results)
     });
 
     // Log the results once you've looped through each of the elements found with cheerio
