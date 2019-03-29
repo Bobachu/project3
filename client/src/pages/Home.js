@@ -129,14 +129,15 @@ class Home extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.state.table.map(table => (
-                    <tr>
-                      <td>{table.rank}</td>
-                      <td>{table.rankLastMonth}</td>
-                      <td>{table.title}</td>
-                      <td>{table.publisher}</td>
-                    </tr>
-                  ))}
+                  {this.state.table.length !== 0 &&
+                    this.state.table.map(table => (
+                      <tr key={table.rank}>
+                        <td>{table.rank}</td>
+                        <td>{table.rankLastMonth}</td>
+                        <td>{table.title}</td>
+                        <td>{table.publisher}</td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>
