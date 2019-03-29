@@ -116,6 +116,9 @@ h6 {
 #rating {
     min-height:300px;
     padding:5px 20px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
 }
 #compare {
     width: 50% !important;
@@ -154,4 +157,13 @@ h6 {
 
 .w3-round {
     margin: 5px;
+}
+
+.bio-section {
+    border-bottom: 1px solid #ddd;
+    padding: 5px;
+}
+
+h1 {
+    margin-top: 0
 }

@@ -5,24 +5,18 @@ import API from "../utils/API";
 class User extends Component {
   state = {
     user: "",
+    bio: "",
     wishlist: []
   };
 
-  // componentDidMount() {
-  //   this.loadUser();
-  //   this.loadWishlist();
-  // }
+  componentDidMount() {
+    let username = window.location.pathname.slice(6);
+    this.loadUser(username);
+  }
 
-  loadUser = () => {
-    API.getUser()
-      .then(res => this.setState(this.state.user = res.data))
-      .catch(err => console.log(err));
-  };
-
-  loadWishlist = () => {
-    API.getWishlist()
-      .then(res =>
-        this.setState({ wishlist: res.data, title: ""}))
+  loadUser = (username) => {
+    API.loadUser(username)
+      .then(res => this.setState({ user: res.data.username, bio: res.data.bio, wishlist: res.data.wishlist }))
       .catch(err => console.log(err));
   };
 
@@ -36,16 +30,19 @@ class User extends Component {
   render() {
     return (
       <div className="w3-container">
-        <div className="w3-row w3-padding-48 userHeading">
+        <div className="w3-row w3-padding-48 userHeading ">
           <div className="w3-col m4">
             {/* User's profile picture */}
             <img className="profile-pic w3-circle" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEJ6nY4Jb-8SFmi1iR4OnFIGzbMOdECbMKiKU4RqKltU4QY35S'} alt="profile" />
           </div>
           <div className="w3-col m8">
             {/* User's profile info */}
-            <h1>Username</h1>
-            <h6>Joined: 03/20/19</h6>
-            <h4>Hello, welcome to my profile! This is my about me section. Below you can see my wishlist and searched games. Thanks for visiting!</h4>
+            <h1 className="bio-section">{this.state.user}</h1>
+            {/* <h6>Joined: 03/20/19</h6> */}
+            <h4>
+              {/* {this.state.bio} */}
+              {this.state.bio.length ? this.state.bio : "Hello, welcome to my profile! This is my about me section. Below you can see my wishlist and searched games. Thanks for visiting!"}
+            </h4>
           </div>
         </div>
         <div className="w3-row userItems">
@@ -54,7 +51,21 @@ class User extends Component {
             <table class="w3-table w3-bordered">
 
               {/* Hard coded games in wishlist for preview */}
-              <tr>
+              {this.state.wishlist.map(game => {
+                if (!this.state.wishlist.length === 0) {
+                  return (
+                      <h3>This user needs to add games to their wishlist!</h3>
+                  )
+                } else {
+                return (
+                  <tr>
+                    <td className="title-table">{game}</td>
+                    <td className="remove-table"><button class="trash-btn" onClick={this.removeGame}><i class="fas fa-trash-alt"></i></button></td>
+                  </tr>
+                )
+                };
+              })}
+              {/* <tr>
                 <td className="title-table">Mario Kart 8</td>
                 <td className="remove-table"><button class="trash-btn" onClick={this.removeGame}><i class="fas fa-trash-alt"></i></button></td>
               </tr>
@@ -65,14 +76,14 @@ class User extends Component {
               <tr>
                 <td className="title-table">Rune Factory 5</td>
                 <td className="remove-table"><button class="trash-btn" onClick={this.removeGame}><i class="fas fa-trash-alt"></i></button></td>
-              </tr>
+              </tr> */}
 
             </table>
           </div>
           <div className="w3-col m4">
             <h2 className="w3-center header-2">RECENTLY SEARCHED</h2>
             <ul class="w3-ul w3-hoverable">
-            {/* Hard coded recently searched games */}
+              {/* Hard coded recently searched games */}
               <li>Yoshi's Crafted World</li>
               <li>Pokemon: Let's Go Eevee!</li>
               <li>Super Mario Party</li>

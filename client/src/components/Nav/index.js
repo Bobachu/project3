@@ -26,12 +26,11 @@ class Nav extends Component {
     });
   };
 
-  searchesGame = () => {
+  searchesGame = (event) => {
     console.log(this.state.title);
+    event.preventDefault();
     window.location.assign("/search/" + this.state.title);
-   // return (
-    //   <Link to={"/search/" + this.state.title} />
-    // ) 
+
   };
 
   render() {
@@ -48,6 +47,7 @@ class Nav extends Component {
           </a>
           {/* </div> */}
           {/* <div className="w3-col s3" id="navSearch"> */}
+          <form onSubmit={this.searchesGame}>
           <Input
             value={this.state.title}
             onChange={this.handleInputChange}
@@ -58,12 +58,14 @@ class Nav extends Component {
           {/* </div> */}
           {/* <div className="w3-col s3"> */}
           <FormBtn
+            type="submit"
             className="w3-bar-item w3-mobile"
             style={{ marginLeft: 10 }}
             onClick={this.searchesGame}
           >
             Search
           </FormBtn>
+          </form>
           {/* </div> */}
           {/* <div className="w3-col s3 w3-right"> */}
           <a

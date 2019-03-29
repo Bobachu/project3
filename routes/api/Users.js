@@ -7,9 +7,8 @@ router.route("/")
   .post(UserController.create);
 
 // Matches with "/api/wishlists/:id"
-router.route("/:id")
-  .get(UserController.findById)
+router.route("/:username")
+  .get(UserController.findOne)
   .put(UserController.update)
-  .delete(UserController.remove);
 
 module.exports = router;
