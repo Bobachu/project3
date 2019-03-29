@@ -61,23 +61,75 @@ class Nav extends Component {
     })
   };
 
-  searchesGame = () => {
+  searchesGame = (event) => {
     console.log(this.state.title);
+    event.preventDefault();
     window.location.assign("/search/" + this.state.title);
+<<<<<<< HEAD
+
+=======
     // return (
     //   <Link to={"/search/" + this.state.title} />
     // ) 
+>>>>>>> d76931c4dea6c72c805d2a260afbc8e304e1e378
   };
 
   render() {
     return (
       <>
+<<<<<<< HEAD
+      <div className="w3-top">
+        <div className="w3-bar w3-row w3-padding w3-black" id="navBar">
+          {/* <div className="w3-col s3"> */}
+          <a
+            href="/"
+            className="w3-button w3-block w3-black w3-bar-item w3-mobile"
+          >
+            HOME
+          </a>
+          {/* </div> */}
+          {/* <div className="w3-col s3" id="navSearch"> */}
+          <form onSubmit={this.searchesGame}>
+          <Input
+            value={this.state.title}
+            onChange={this.handleInputChange}
+            name="title"
+            placeholder="Game"
+            className="w3-bar-item w3-mobile w3-round-large"
+          />
+          {/* </div> */}
+          {/* <div className="w3-col s3"> */}
+          <FormBtn
+            type="submit"
+            className="w3-bar-item w3-mobile"
+            style={{ marginLeft: 10 }}
+            onClick={this.searchesGame}
+          >
+            Search
+          </FormBtn>
+          </form>
+          {/* </div> */}
+          {/* <div className="w3-col s3 w3-right"> */}
+          <a
+            href="#where"
+            className="w3-button w3-block w3-black w3-bar-item w3-right w3-mobile"
+            onClick={this.showModal}
+          >
+            LOGIN
+          </a>
+          {/* </div> */}
+          <Modal show={this.state.show} handleClose={this.hideModal}>
+            <button
+              className="w3-button w3-xlarge w3-hover-red w3-display-topright"
+              onClick={this.hideModal}
+=======
         <div className="w3-top">
           <div className="w3-bar w3-row w3-padding w3-black" id="navBar">
             {/* <div className="w3-col s3"> */}
             <a
               href="/"
               className="w3-button w3-block w3-black w3-bar-item w3-mobile"
+>>>>>>> d76931c4dea6c72c805d2a260afbc8e304e1e378
             >
               HOME
           </a>
