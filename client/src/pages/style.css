@@ -16,17 +16,17 @@ iframe{
 .w3-display-right {
     margin-right: 25%;
 }
-.userHeading {
+/* .userHeading {
     margin-left: 300px;
     margin-right: 300px;
     margin-top: 50px;
-}
+} */
 
-.userItems {
+/* .userItems {
     margin-left: 200px;
     margin-right: 200px;
     margin-top: 50px;
-}
+} */
 
 .profile-pic {
     width:  175px;
@@ -169,6 +169,13 @@ h6 {
     }
     .gameSearch{
         margin-top: 1%;
+    }
+    .userHeading{
+        margin-top: 130px !important;
+        text-align: center !important;
+    }
+    .profile-pic{
+        margin: 0 !important;
     }
   }
 

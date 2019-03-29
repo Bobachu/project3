@@ -5,7 +5,7 @@ const requireSignin = passport.authenticate("local", { session: false });
 const requireToken = passport.authenticate("jwt", { session: false });
 const jwt = require("jsonwebtoken");
 // const path = require("path");
-const path = require("path");
+const config = require("./config");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 
@@ -50,7 +50,7 @@ app.post("/submit", function (req, res) {
 
 app.post("/login", requireSignin, function (req, res) {
   console.log(req.user);
-  jwt.sign({ sub: req.user.id }, "kittens", function (err, token) {
+  jwt.sign({ sub: req.user.id }, config.secret, function (err, token) {
     res.json({ token });
   });
   // res.send("You are logged in!");
