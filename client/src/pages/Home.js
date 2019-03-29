@@ -30,7 +30,7 @@ class Home extends Component {
   searchesGame = () => {
     console.log(this.state.title);
     window.location.assign("/search/" + this.state.title);
-   // return (
+    // return (
     //   <Link to={"/search/" + this.state.title} />
     // ) 
   };
@@ -132,7 +132,11 @@ class Home extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.state.table.map(table => <tr><td>{table.rank}</td>       <td>{table.rankLastMonth}</td><td>{table.title}</td><td>{table.publisher}</td></tr>)}
+                  {this.state.table.length !== 0 && this.state.table.map(table => (<tr key={table.rank}>
+                    <td>{table.rank}</td>
+                    <td>{table.rankLastMonth}</td>
+                    <td>{table.title}</td><td>{table.publisher}</td>
+                  </tr>))}
                 </tbody>
               </table>
 
