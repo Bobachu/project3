@@ -83,18 +83,12 @@ h6 {
     margin-top: 8px;
 }
 
-#gameInfo{
-    /* background-position: "center";
-    background-size: "cover"; */
-    /* background-color: green; */
+/* #gameInfo{
     max-width: 66.66%;
   }
-  #rating{
-    /* background-position: "center";
-    background-size: "cover"; */
-    /* background-color: blue; */
+#rating{
     max-width: 33.33%;
-  }
+  } */
 
 #infoDiv {
     min-height:500px;
@@ -145,13 +139,38 @@ h6 {
     margin: 20px;
     border: 5px solid black;
 }
+.w3-round {
+    margin: 5px;
+}
+#topGames{
+    margin-bottom: 20px;
+}
 @media only screen and (max-width: 700px) {
     #logoText {
         font-size: 35px !important;
     }
     
   }
+  @media only screen and (max-width: 600px) {
+    #gameInfoContainer{
+        margin-top: 134px !important;
+    }
+    #gameInfo{
+        text-align: center !important;
+    }
+    #home{
+        margin-top: 130px !important;
+    }
+    .game-desc {
+        width: 100%;
+    }
+    .game-image{
+        margin-left: 20% !important;
+    }
+    .gameSearch{
+        margin-top: 1%;
+    }
+  }
 
-.w3-round {
-    margin: 5px;
-}
+
+
