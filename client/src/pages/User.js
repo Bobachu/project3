@@ -30,23 +30,25 @@ class User extends Component {
   render() {
     return (
       <div className="w3-container">
-        <div className="w3-row w3-padding-48 userHeading ">
-          <div className="w3-col m4">
+        <div className="w3-row w3-padding-48 userHeading">
+          <div className="w3-container w3-third">
             {/* User's profile picture */}
             <img className="profile-pic w3-circle" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEJ6nY4Jb-8SFmi1iR4OnFIGzbMOdECbMKiKU4RqKltU4QY35S'} alt="profile" />
           </div>
-          <div className="w3-col m8">
+          <div className="w3-container w3-twothird">
             {/* User's profile info */}
             <h1 className="bio-section">{this.state.user}</h1>
-            {/* <h6>Joined: 03/20/19</h6> */}
+            {/* <h6>Joined: 03/20/19</h6>
             <h4>
-              {/* {this.state.bio} */}
               {this.state.bio.length ? this.state.bio : "Hello, welcome to my profile! This is my about me section. Below you can see my wishlist and searched games. Thanks for visiting!"}
             </h4>
+            <h1>Username</h1> */}
+            <h6>Joined: 03/20/19</h6>
+            <h4>Hello, welcome! Below you can see your wishlist and previously searched games. Thanks for visiting!</h4>
           </div>
         </div>
         <div className="w3-row userItems">
-          <div className="w3-col m8">
+          <div className="w3-container w3-twothird">
             <h2 className="w3-center header-2">WISHLIST</h2>
             <table class="w3-table w3-bordered">
 
@@ -80,7 +82,7 @@ class User extends Component {
 
             </table>
           </div>
-          <div className="w3-col m4">
+          <div className="w3-container w3-third">
             <h2 className="w3-center header-2">RECENTLY SEARCHED</h2>
             <ul class="w3-ul w3-hoverable">
               {/* Hard coded recently searched games */}

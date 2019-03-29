@@ -79,16 +79,16 @@ class Search extends Component {
   };
 
   hideModal = () => {
-    this.setState({ show: false });
+    this.setState({ show: false, videoUrl: "" });
   };
 
   render() {
     return (
-      <div className="w3-container w3-margin">
+      <div className="w3-container w3-margin" id="gameInfoContainer">
         <br />
         <br />
         <div className="w3-row">
-          <div className="w3-col w3-container m8 l8" id="gameInfo">
+          <div className="w3-col w3-container w3-twothird" id="gameInfo">
             <div className="w3-row">
               <h1>
                 <b>{this.state.title}</b>
@@ -115,8 +115,9 @@ class Search extends Component {
               </div>
             </div>
           </div>
-          <div className="w3-col w3-container m4 l4" id="rating">
-            <h2 className="header-2 w3-center m3 heads">AGE RATING</h2>
+           
+          <div className="w3-col w3-container w3-third" id="rating">
+          <h2 className="header-2 w3-center m3 heads">AGE RATING</h2>
             {/* Age Rating HERE */}
             {this.state.ageRating.length ? this.state.ageRating.filter(rating => rating.substring(0, 4) === "ESRB") : "ESRB is currently not available."}
             {/* <img id="age-rating-img" src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/ratings/6/63/ESRB-ver2013_E.png?width=325" alt="age rating" width="75" height="110" /> */}
@@ -158,11 +159,11 @@ class Search extends Component {
           <iframe src={this.state.videoUrl} width="660" height="371" />
         </Modal>
         {/* Future Dev: Purchase Links Below */}
-        {/* <div className="w3-row">
+        <div className="w3-row">
           <h2 className="header-2 w3-center m3">PURCHASE AT</h2>
           <div className="w3-col m12 w3-center" id="purchase">
           </div>
-        </div> */}
+        </div>
       </div>
     );
   }

@@ -5,7 +5,7 @@ const requireSignin = passport.authenticate("local", { session: false });
 const requireToken = passport.authenticate("jwt", { session: false });
 const jwt = require("jsonwebtoken");
 // const path = require("path");
-const path = require("path");
+const config = require("./config");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 
@@ -35,12 +35,14 @@ app.get("/", function (req, res) {
 });
 
 // Route to post our form submission to mongoDB via mongoose
-app.post("/submit", function (req, res) {
+app.post("/api/signup", function (req, res) {
   // Create a new user using req.body
+  console.log(req.body);
   User.create(req.body)
-    .then(function (gameAdvisor) {
+    .then(function (dbUser) {
       // If saved successfully, send the the new User document to the client
-      res.json(gameAdvisor);
+      console.log(dbUser);
+      res.json(dbUser);
     })
     .catch(function (err) {
       // If an error occurs, send the error to the client
@@ -48,9 +50,9 @@ app.post("/submit", function (req, res) {
     });
 });
 
-app.post("/login", requireSignin, function (req, res) {
-  console.log(req.user);
-  jwt.sign({ sub: req.user.id }, "kittens", function (err, token) {
+app.post("/api/login", requireSignin, function (req, res) {
+  // console.log(req.user);
+  jwt.sign({ sub: req.user.id }, config.secret, function (err, token) {
     res.json({ token });
   });
   // res.send("You are logged in!");
@@ -64,8 +66,7 @@ app.get("/protected", requireToken, function (req, res) {
 app.get("/api/gamerankings", function (req, res) {
   // First, tell the console what server.js is doing
   console.log("\n***********************************\n" +
-    "Grabbing every thread name and link\n" +
-    "from reddit's webdev board:" +
+    "Grabbing current top games" + 
     "\n***********************************\n");
 
   // Making a request via axios for "npd"scrape. 
@@ -97,17 +98,17 @@ app.get("/api/gamerankings", function (req, res) {
             tr.rankLastMonth = $(element).text();
             break;
           case 2:
-            tr.title = $(element).text();
+            tr.title = $(element).text().replace(/\^|\*/, " ");
             break;
           case 3:
             tr.publisher = $(element).text();
             break;
         }
       });
-
       // In the currently selected element, look at its child elements (i.e., its a-tags),
       // then save the values for any "href" attributes that the child elements may have
       results.push(tr);
+      console.log(results)
     });
 
     // Log the results once you've looped through each of the elements found with cheerio

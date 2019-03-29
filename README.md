@@ -7,7 +7,7 @@ The goal of this project is to help parents understand video game ratings and sc
 
 ## MVP
 * Easy to use, video games for dummies format.
-* Upon entering a game title the user will see a game information and box art as well as links to live 'twitch video' of the actual game.
+* Upon entering a game title the user will see the game information and box art as well as links to live 'twitch video' of the actual game.
 * The user will also recieve the 'ESRB' ~~and 'commonsensemedia'~~ ratings for each game. 
 * ~~These ratings include for example any sexual content or excessive violence.~~
 * Links to twitch streams of the searched game will be displayed as thumnails
@@ -42,7 +42,7 @@ The goal of this project is to help parents understand video game ratings and sc
 * Pull certain info from the IGDB api to make the information more robust
   * Summary
   * Genres
-  * 
+  * Metacritic rating
 
 
 #### For help and support

@@ -29,6 +29,27 @@ router.route("/twitch/:game")
     })
   });
 
+  router.route("/igdb/:game")
+  .post((req, res) => {
+    const { game } = req.params;
+    axios({
+      url: "https://api-v3.igdb.com/games",
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "user-key": "940917f24ab11ddaece60ec17ad01354",
+      },
+      data:
+        "search \"" + game + "\"; fields name,summary,aggregated_rating; where (category = 0 & platforms = [130] & first_release_date > 1420070400)|(category = 0 & platforms = [48] & first_release_date > 1420070400)|(category = 0 & platforms = [49] & first_release_date > 1420070400)|(category = 0 & platforms = [6] & first_release_date > 1420070400);"
+    })
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  });
+
 module.exports = router;
 
 
