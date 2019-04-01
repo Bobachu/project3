@@ -12,8 +12,8 @@
     "start:dev": "concurrently \"nodemon --ignore 'app/*'\" \"yarn client\"",
     "client": "cd client && yarn start",
     "seed": "node scripts/seedDB.js",
-    "install": "cd app && yarn",
-    "build": "cd app && yarn build",
+    "install": "cd client && yarn",
+    "build": "cd client && yarn build",
     "heroku-postbuild": "yarn build"
   },
   "author": "",
