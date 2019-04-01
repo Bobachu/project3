@@ -3,9 +3,12 @@ const axios = require("axios");
 export default {
   // Searches for a game using the Giant Bomb API
   searchGame: function(game) {
-    return axios.get("/api/data/giantbomb/" + game) ;
+    return axios.get("/api/data/giantbomb/" + game);
   },
 
+  searchIgdb: function(game) {
+    return axios.post("/api/data/igdb/" + game);
+  },
   // Searches for streamers playing on Twitch API
   searchTwitch: function(game) {
     // return twitch.get("https://api.twitch.tv/kraken/search/streams?limit=3&query=assassin+creed+odyssey")
