@@ -88,11 +88,12 @@ class Search extends Component {
       .catch(err => console.log(err));
   };
 
-  addToWishlist = event => {
-    const title = this.state.title;    
+  addToWishlist = () => {
+    const title = this.state.title;
+    const username = "hello";    
     axios.post("/api/wishlists/add", {
       title,
-      // user
+      username
     }).then(console.log(title))
     .catch(err => console.log(err))
   };

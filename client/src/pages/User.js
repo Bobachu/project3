@@ -6,7 +6,8 @@ class User extends Component {
   state = {
     user: "",
     bio: "",
-    wishlist: []
+    wishlist: [],
+    gameTitles: []
   };
 
   componentDidMount() {
