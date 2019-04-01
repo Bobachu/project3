@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { Input, FormBtn } from "../Form";
 import Modal from "../Modal";
 import "./nav.css";
@@ -126,13 +126,13 @@ class Nav extends Component {
           </a> */}
           {/* ################# THE TESTING CODE #################### */}
           {isLoggedIn ? (
-            <a
+            <Link
               // href="#where"
               className="w3-button w3-block w3-black w3-hover-teal w3-bar-item w3-right w3-mobile"
-              onClick={this.showUser}
+              to={'/user/' + this.state.username}
             >
               USER
-            </a>
+            </Link>
           ) : (
             <a
               // href="#where"
