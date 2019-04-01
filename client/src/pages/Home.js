@@ -134,7 +134,7 @@ class Home extends Component {
                       <tr key={table.rank}>
                         <td>{table.rank}</td>
                         <td>{table.rankLastMonth}</td>
-                        <td>{table.title}</td>
+                        <td><a href={"/search/" + table.title.replace(/:/, "")}>{table.title}</a></td>
                         <td>{table.publisher}</td>
                       </tr>
                     ))}
