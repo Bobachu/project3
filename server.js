@@ -32,9 +32,9 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 // Define API routes here
 app.use(require("./routes"));
 
-app.get("/", function (req, res) {
-  res.send("Home Route");
-});
+// app.get("/", function (req, res) {
+//   res.send("Home Route");
+// });
 
 // Route to post our form submission to mongoDB via mongoose
 app.post("/api/signup", function (req, res) {
