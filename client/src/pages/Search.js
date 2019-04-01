@@ -12,13 +12,23 @@ class Search extends Component {
     ageRating: [],
     twitchData: [],
     videoUrl: "",
-    metacritic: "",
+    metacritic: ""
   };
 
   // When this component mounts, grab the book with the _id of this.props.match.params.id
   componentDidMount() {
-    var game = window.location.pathname.slice(8);
+    var game = this.props.match.params.game;
+    this.searchGameData(game);
+  }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.game !== prevProps.match.params.game) {
+      var game = this.props.match.params.game;
+      this.searchGameData(game);
+    }
+  }
+
+  searchGameData = game => {
     API.searchGame(game)
       .then(res => {
         // If there is an age rating, add the age rating into ageRating.
@@ -52,7 +62,7 @@ class Search extends Component {
       .then(res => {
         this.setState({
           metacritic: res.data[0].aggregated_rating.toFixed(2),
-          overview: res.data[0].summary,
+          overview: res.data[0].summary
         });
         console.log(this.state.metacritic);
         console.log(this.state.age);
@@ -76,7 +86,7 @@ class Search extends Component {
         });
       })
       .catch(err => console.log(err));
-  }
+  };
 
   showModal = event => {
     event.preventDefault();

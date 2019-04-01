@@ -37,7 +37,7 @@ class Nav extends Component {
     } else if (this.state.password.length > 4) {
       const { username, password } = this.state;
       Axios.post("/api/signup", { username, password }).then(data => {
-        console.log(data.data);
+        // console.log(data.data);
         this.setState({
           username: "",
           password: "",
@@ -45,13 +45,14 @@ class Nav extends Component {
         });
       });
     }
+    this.hideModal();
   };
 
   userLogin = event => {
     event.preventDefault();
     const { username, password } = this.state;
     Axios.post("/api/login", { username, password }).then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       this.setState({
         username: "",
         password: "",
@@ -64,9 +65,9 @@ class Nav extends Component {
   searchesGame = event => {
     console.log(this.state.title);
     event.preventDefault();
-    // this.props.history.push("/search/" + this.state.title);
-    window.location.assign("/search/" + this.state.title);
-
+    this.props.history.push("/search/" + this.state.title);
+    // window.location.assign("/search/" + this.state.title);
+    this.setState({title: ""})
     // return (
     //   <Link to={"/search/" + this.state.title} />
     // )
