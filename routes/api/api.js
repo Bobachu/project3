@@ -5,6 +5,17 @@ const twitch = axios.create({
   accept: "application/vnd.twitchtv.v5+json",
   headers: { "Client-ID": client_id }
 });
+<<<<<<< HEAD
+
+const user_key = "940917f24ab11ddaece60ec17ad01354"
+const igdb = axios.create({
+  accept: "application/json",
+  headers: {"user-key": user_key,
+	data: "(category = 0 & platforms = [130] & first_release_date > 1420070400)|(category = 0 & platforms = [48] & first_release_date > 1420070400)|(category = 0 & platforms = [49] & first_release_date > 1420070400)|(category = 0 & platforms = [6] & first_release_date > 1420070400)"}
+});
+ 
+=======
+>>>>>>> 15e8a7211ff284b9d017f8c5c62094d3fd416442
 // Matches with "/api/wishlists"
 router.route("/giantbomb/:game").get((req, res) => {
   const { game } = req.params;
@@ -36,8 +47,24 @@ router.route("/twitch/:game").get((req, res) => {
     });
 });
 
+<<<<<<< HEAD
+
+router.route("/igdb/:game")
+.post((req, res) => {
+    const { game } = req.params;
+    axios.post("https://api-v3.igdb.com/games/?seach=halo" + game).then((data) => {
+      console.log(data.data)
+      res.json(data.data);
+    }).catch(e => {
+      console.log("THERE WAS AN ERROR WITH THEIR API " + e)
+    })
+  });
+
+  router.route("/igdb/:game")
+=======
 router
   .route("/igdb/:game")
+>>>>>>> 15e8a7211ff284b9d017f8c5c62094d3fd416442
   .post((req, res) => {
     const { game } = req.params;
     axios({
@@ -64,6 +91,10 @@ router
   
 module.exports = router;
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 15e8a7211ff284b9d017f8c5c62094d3fd416442
 // ######### DEAD CODE - FOR REFERENCE #################
 /*
 // // TWitch API credentials

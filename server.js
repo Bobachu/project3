@@ -118,6 +118,25 @@ app.get("/api/gamerankings", function(req, res) {
     });
 });
 
+app.get("/api/esrb", function (req, res) {
+  // First, tell the console what server.js is doing
+  console.log("\n***********************************\n" +
+    "Grabbing current top games" +
+    "\n***********************************\n");
+
+  axios.get("https://www.esrb.org/ratings/search.aspx?searchType=title&titleOrPublisher=zelda").then(function (response) {
+    var $ = cheerio.load(response.data);
+
+    const dataRow = $("tbody tr").eq(0);
+
+    const img = dataRow.find("td[data-title=Ratings] img").attr("src");
+    const descriptor = dataRow.find('td[data-title="Content Descriptors"] div').text();
+    console.log(img);
+    console.log(descriptor);
+
+  });
+});
+
 app.get("*", function(req, res) {
   res.sendFile(path.resolve(__dirname + "/client/build/index.html"));
 });
@@ -126,3 +145,4 @@ app.get("*", function(req, res) {
 app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");
 });
+
