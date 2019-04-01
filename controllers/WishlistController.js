@@ -20,13 +20,15 @@ module.exports = {
     // Adds titles to the Wishlist and pushes them to the User
     create: function (req, res) {
         db.Wishlist
-            .create(req.body)
+            .create({
+                title: req.body.title
+            })
             .then(function(dbWish) {
-                console.log("HIT");
+                console.log(req.body.title);
                 // If a Note was created successfully, find one User (there's only one) and push the new Note's _id to the User's `notes` array
                 // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
                 // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-                return db.User.findOneAndUpdate({_id: req.body.id}, { $push: { wishlist: dbWish._id } }, { new: true, upsert: true });
+                return db.User.findOneAndUpdate({_id: req.user._id}, { $push: { wishlist: dbWish._id } }, { new: true, upsert: true });
               })
               .then(function(dbUser) {
                 // If the User was updated successfully, send it back to the client

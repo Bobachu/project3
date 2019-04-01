@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./style.css";
 import API from "../utils/API";
 import Modal from "../components/Modal";
+const axios = require("axios");
 
 class Search extends Component {
   state = {
@@ -88,6 +89,15 @@ class Search extends Component {
       .catch(err => console.log(err));
   };
 
+  addToWishlist = event => {
+    const title = this.state.title;    
+    axios.post("/api/wishlists/add", {
+      title,
+      // user
+    }).then(console.log(title))
+    .catch(err => console.log(err))
+  };
+
   showModal = event => {
     event.preventDefault();
     const link = event.target.id;
@@ -132,11 +142,11 @@ class Search extends Component {
                     <i className="fas fa-info-circle" /> Get More Info
                   </button>
                 </a>
-                <form action="/add" method="post">
-                <button value={this.state.title} name="addWish" className="w3-button w3-round w3-teal">
+                {/* <form action="/api/wishlists/add" method="post"> */}
+                <button onClick={() => this.addToWishlist()}name="addWish" className="w3-button w3-round w3-teal">
                   <i className="far fa-list-alt" /> Add to Wishlist
                 </button>
-                </form>
+                {/* </form> */}
 
                 {/* <p><b>Genres: </b>{this.state.genres}</p> */}
               </div>
