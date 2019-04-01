@@ -15,11 +15,11 @@ class Nav extends Component {
   };
 
   showModal = () => {
-    if (this.state.loggedin) {
-      this.props.history.push("/user/" + this.state.username);
-    } else {
+    // if (this.state.loggedin) {
+    //   this.props.history.push("/user/" + this.state.username);
+    // } else {
       this.setState({ show: true });
-    }
+    // }
   };
 
   hideModal = () => {
@@ -112,15 +112,15 @@ class Nav extends Component {
           </form>
           {/* </div> */}
           {/* <div className="w3-col s3 w3-right"> */}
-          <a
+          {/* <a
             // href="#where"
             className="w3-button w3-block w3-black w3-hover-teal w3-bar-item w3-right w3-mobile"
             onClick={this.showModal}
           >
             {isLoggedIn ? "USER" : "LOGIN"}
-          </a>
+          </a> */}
           {/* ################# THE TESTING CODE #################### */}
-          {/* {isLoggedIn ? (
+          {isLoggedIn ? (
             <a
               // href="#where"
               className="w3-button w3-block w3-black w3-hover-teal w3-bar-item w3-right w3-mobile"
@@ -136,7 +136,7 @@ class Nav extends Component {
             >
               LOGIN
             </a>
-          )} */}
+          )}
           <Modal show={this.state.show} handleClose={this.hideModal}>
             <button
               className="w3-button w3-xlarge w3-hover-red w3-display-topright"
