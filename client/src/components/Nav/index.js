@@ -15,10 +15,10 @@ class Nav extends Component {
   };
 
   showModal = () => {
-    if (this.state.loggedin === false){
-    this.setState({ show: true });
-    } else {
+    if (this.state.loggedin) {
       this.props.history.push("/user/" + this.state.username);
+    } else {
+      this.setState({ show: true });
     }
   };
 
@@ -71,7 +71,7 @@ class Nav extends Component {
     event.preventDefault();
     this.props.history.push("/search/" + this.state.title);
     // window.location.assign("/search/" + this.state.title);
-    this.setState({title: ""})
+    this.setState({ title: "" });
     // return (
     //   <Link to={"/search/" + this.state.title} />
     // )
@@ -119,6 +119,24 @@ class Nav extends Component {
           >
             {isLoggedIn ? "USER" : "LOGIN"}
           </a>
+          {/* ################# THE TESTING CODE #################### */}
+          {/* {isLoggedIn ? (
+            <a
+              // href="#where"
+              className="w3-button w3-block w3-black w3-hover-teal w3-bar-item w3-right w3-mobile"
+              onClick={this.showUser}
+            >
+              USER
+            </a>
+          ) : (
+            <a
+              // href="#where"
+              className="w3-button w3-block w3-black w3-hover-teal w3-bar-item w3-right w3-mobile"
+              onClick={this.showModal}
+            >
+              LOGIN
+            </a>
+          )} */}
           <Modal show={this.state.show} handleClose={this.hideModal}>
             <button
               className="w3-button w3-xlarge w3-hover-red w3-display-topright"
