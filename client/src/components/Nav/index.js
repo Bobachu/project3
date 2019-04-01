@@ -45,6 +45,7 @@ class Nav extends Component {
         });
       });
     }
+    this.hideModal();
   };
 
   userLogin = event => {
@@ -64,9 +65,9 @@ class Nav extends Component {
   searchesGame = event => {
     console.log(this.state.title);
     event.preventDefault();
-    // this.props.history.push("/search/" + this.state.title);
-    window.location.assign("/search/" + this.state.title);
-
+    this.props.history.push("/search/" + this.state.title);
+    // window.location.assign("/search/" + this.state.title);
+    this.setState({title: ""})
     // return (
     //   <Link to={"/search/" + this.state.title} />
     // )
