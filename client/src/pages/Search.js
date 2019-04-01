@@ -66,7 +66,6 @@ class Search extends Component {
           overview: res.data[0].summary
         });
         console.log(this.state.metacritic);
-        console.log(this.state.age);
       })
       .catch(err => console.log(err));
 
