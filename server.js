@@ -66,7 +66,7 @@ app.get("/protected", requireToken, function (req, res) {
 app.get("/api/gamerankings", function (req, res) {
   // First, tell the console what server.js is doing
   console.log("\n***********************************\n" +
-    "Grabbing current top games" + 
+    "Grabbing current top games" +
     "\n***********************************\n");
 
   // Making a request via axios for "npd"scrape. 
@@ -108,7 +108,7 @@ app.get("/api/gamerankings", function (req, res) {
       // In the currently selected element, look at its child elements (i.e., its a-tags),
       // then save the values for any "href" attributes that the child elements may have
       results.push(tr);
-      console.log(results)
+      // console.log(results)
     });
 
     // Log the results once you've looped through each of the elements found with cheerio
@@ -117,20 +117,26 @@ app.get("/api/gamerankings", function (req, res) {
 });
 
 app.get("/api/esrb", function (req, res) {
-axios.get("http://www.esrb.org/ratings/search.aspx").then(function(response) {
+  // First, tell the console what server.js is doing
+  console.log("\n***********************************\n" +
+    "Grabbing current top games" +
+    "\n***********************************\n");
 
-  var $ = cheerio.load(response.data);
+  axios.get("https://www.esrb.org/ratings/search.aspx?searchType=title&titleOrPublisher=zelda").then(function (response) {
+    var $ = cheerio.load(response.data);
 
-  const dataRow = $("tbody tr").eq(0);
+    const dataRow = $("tbody tr").eq(0);
 
-  const img = dataRow.find("td[data-title=Ratings] img").attr("src");
-  const descriptor = dataRow.find('td[data-title="Content Descriptors"] div').text();
-  console.log(img);
-  console.log(descriptor);
-});
+    const img = dataRow.find("td[data-title=Ratings] img").attr("src");
+    const descriptor = dataRow.find('td[data-title="Content Descriptors"] div').text();
+    console.log(img);
+    console.log(descriptor);
+
+  });
 });
 
 // Start the server
 app.listen(PORT, function () {
   console.log("App running on port " + PORT + "!");
 });
+
