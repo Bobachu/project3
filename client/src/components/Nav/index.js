@@ -83,7 +83,7 @@ class Nav extends Component {
 
 
   render() {
-    const isLoggedIn = this.state.loggedin;
+    let isLoggedIn = this.state.loggedin;
     return (
       <div className="w3-top">
         <div className="w3-bar w3-row w3-padding w3-black" id="navBar">
