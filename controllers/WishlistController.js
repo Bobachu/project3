@@ -21,20 +21,38 @@ module.exports = {
     create: function (req, res) {
         db.Wishlist
             .create(req.body)
-            .then(function () {
-                console.log(req.body)
-                if (id.match(/^[0-9a-fA-F]{24}$/)) {
-                    return db.User.findByIdAndUpdate({ _id: req.body.id }, { $push: { wishlist: req.body.title } }, { new: true, upsert: true });
-                }
-            })
-            .then(function (dbUser) {
+            .then(function(dbWish) {
+                console.log("HIT");
+                // If a Note was created successfully, find one User (there's only one) and push the new Note's _id to the User's `notes` array
+                // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
+                // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
+                return db.User.findOneAndUpdate({_id: req.body.id}, { $push: { wishlist: dbWish._id } }, { new: true, upsert: true });
+              })
+              .then(function(dbUser) {
                 // If the User was updated successfully, send it back to the client
                 res.json(dbUser);
-            })
-            .catch(function (err) {
+              })
+              .catch(function(err) {
                 // If an error occurs, send it back to the client
                 res.json(err);
-            });
+              });
+          
+
+
+            // .then(function () {
+            //     console.log(req.body)
+            //     if (id.match(/^[0-9a-fA-F]{24}$/)) {
+            //         return db.User.findByIdAndUpdate({ _id: req.body.id }, { $push: { wishlist: req.body.title } }, { new: true, upsert: true });
+            //     }
+            // })
+            // .then(function (dbUser) {
+            //     // If the User was updated successfully, send it back to the client
+            //     res.json(dbUser);
+            // })
+            // .catch(function (err) {
+            //     // If an error occurs, send it back to the client
+            //     res.json(err);
+            // });
     },
 
     // Updates a title on the Wishlist if needed

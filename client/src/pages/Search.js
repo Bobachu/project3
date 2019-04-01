@@ -104,20 +104,21 @@ class Search extends Component {
                 />
               </div>
               <div className="w3-col game-desc">
-                <h4>
                 <h3 className="heads">Overview</h3>
-                </h4>
                 <p>{this.state.overview}</p>
                 <a href={this.state.link} target="_blank" rel="noopener noreferrer"><button className="w3-button w3-round w3-black"><i className="fas fa-info-circle"></i> Get More Info</button></a>
-                <button className="w3-button w3-round w3-teal"><i className="far fa-list-alt"></i> Add to Wishlist</button>
+
+                <form action="/add" method="post">
+                  <button value={this.state.title} name="addWish" className="w3-button w3-round w3-teal"><i className="far fa-list-alt"></i> Add to Wishlist</button>
+                </form>
 
                 {/* <p><b>Genres: </b>{this.state.genres}</p> */}
               </div>
             </div>
           </div>
-           
+
           <div className="w3-col w3-container w3-third" id="rating">
-          <h2 className="header-2 w3-center m3 heads">AGE RATING</h2>
+            <h2 className="header-2 w3-center m3 heads">AGE RATING</h2>
             {/* Age Rating HERE */}
             {this.state.ageRating.length ? this.state.ageRating.filter(rating => rating.substring(0, 4) === "ESRB") : "ESRB is currently not available."}
             {/* <img id="age-rating-img" src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/ratings/6/63/ESRB-ver2013_E.png?width=325" alt="age rating" width="75" height="110" /> */}
@@ -138,6 +139,7 @@ class Search extends Component {
                 src={twitch.preview}
                 alt="Twitch Stream Preview"
                 onClick={this.showModal}
+                key={twitch.channel}
               />
               // </a>
             ))}
@@ -159,11 +161,11 @@ class Search extends Component {
           <iframe src={this.state.videoUrl} width="660" height="371" />
         </Modal>
         {/* Future Dev: Purchase Links Below */}
-        <div className="w3-row">
+        {/* <div className="w3-row">
           <h2 className="header-2 w3-center m3">PURCHASE AT</h2>
           <div className="w3-col m12 w3-center" id="purchase">
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }

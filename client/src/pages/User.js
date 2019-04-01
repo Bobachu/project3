@@ -31,7 +31,7 @@ class User extends Component {
     return (
       <div className="w3-container">
         <div className="w3-row w3-padding-48 userHeading">
-          <div className="w3-container w3-third">
+          <div className="w3-container w3-third pic-section">
             {/* User's profile picture */}
             <img className="profile-pic w3-circle" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEJ6nY4Jb-8SFmi1iR4OnFIGzbMOdECbMKiKU4RqKltU4QY35S'} alt="profile" />
           </div>
