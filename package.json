@@ -4,14 +4,13 @@
   "description": "Mern Demo",
   "main": "server.js",
   "scripts": {
-    "start": "if-env NODE_ENV=production && yarn start:prod || yarn start:dev",
+    "start": "node server.js",
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'app/*'\" \"yarn client\"",
     "client": "cd client && yarn start",
     "seed": "node scripts/seedDB.js",
     "install": "cd app && yarn",
-    "build": "cd app && yarn build",
-    "heroku-postbuild": "yarn build"
+    "build": "cd app && yarn build"
   },
   "author": "",
   "license": "ISC",
