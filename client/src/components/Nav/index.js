@@ -22,6 +22,10 @@ class Nav extends Component {
     // }
   };
 
+  showUser = () => {
+    this.props.history.push("/user/" + this.state.username);
+  }
+
   hideModal = () => {
     this.setState({ show: false });
   };
@@ -76,6 +80,7 @@ class Nav extends Component {
     //   <Link to={"/search/" + this.state.title} />
     // )
   };
+
 
   render() {
     const isLoggedIn = this.state.loggedin;
