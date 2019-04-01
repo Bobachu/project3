@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import { Input, FormBtn } from "../Form";
 import Modal from "../Modal";
 import "./nav.css";
@@ -9,7 +10,8 @@ class Nav extends Component {
     title: "",
     username: "",
     password: "",
-    show: false
+    show: false,
+    loggedin: false
   };
 
   showModal = () => {
@@ -38,7 +40,8 @@ class Nav extends Component {
         // console.log(data.data);
         this.setState({
           username: "",
-          password: ""
+          password: "",
+          loggedin: true
         });
       });
     }
@@ -51,7 +54,8 @@ class Nav extends Component {
       // console.log(res.data);
       this.setState({
         username: "",
-        password: ""
+        password: "",
+        loggedin: true
       });
       this.hideModal();
     });
@@ -60,13 +64,16 @@ class Nav extends Component {
   searchesGame = event => {
     console.log(this.state.title);
     event.preventDefault();
+    // this.props.history.push("/search/" + this.state.title);
     window.location.assign("/search/" + this.state.title);
+
     // return (
     //   <Link to={"/search/" + this.state.title} />
     // )
   };
 
   render() {
+    const isLoggedIn = this.state.loggedin;
     return (
       <div className="w3-top">
         <div className="w3-bar w3-row w3-padding w3-black" id="navBar">
@@ -105,7 +112,7 @@ class Nav extends Component {
             className="w3-button w3-block w3-black w3-bar-item w3-right w3-mobile"
             onClick={this.showModal}
           >
-            LOGIN
+            {isLoggedIn ? "USER" : "LOGIN"}
           </a>
           <Modal show={this.state.show} handleClose={this.hideModal}>
             <button
@@ -160,4 +167,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default withRouter(Nav);
