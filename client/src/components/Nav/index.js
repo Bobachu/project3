@@ -15,7 +15,11 @@ class Nav extends Component {
   };
 
   showModal = () => {
-    this.setState({ show: true });
+    if (this.state.loggedin) {
+      this.props.history.push("/user/" + this.state.username);
+    } else {
+      this.setState({ show: true });
+    }
   };
 
   hideModal = () => {
@@ -39,7 +43,7 @@ class Nav extends Component {
       Axios.post("/api/signup", { username, password }).then(data => {
         // console.log(data.data);
         this.setState({
-          username: "",
+          // username: "",
           password: "",
           loggedin: true
         });
@@ -54,7 +58,7 @@ class Nav extends Component {
     Axios.post("/api/login", { username, password }).then(res => {
       // console.log(res.data);
       this.setState({
-        username: "",
+        // username: "",
         password: "",
         loggedin: true
       });
@@ -67,7 +71,7 @@ class Nav extends Component {
     event.preventDefault();
     this.props.history.push("/search/" + this.state.title);
     // window.location.assign("/search/" + this.state.title);
-    this.setState({title: ""})
+    this.setState({ title: "" });
     // return (
     //   <Link to={"/search/" + this.state.title} />
     // )
@@ -81,7 +85,7 @@ class Nav extends Component {
           {/* <div className="w3-col s3"> */}
           <a
             href="/"
-            className="w3-button w3-block w3-black w3-bar-item w3-mobile"
+            className="w3-button w3-block w3-black w3-hover-teal w3-margin-right w3-bar-item w3-mobile"
           >
             HOME
           </a>
@@ -109,12 +113,30 @@ class Nav extends Component {
           {/* </div> */}
           {/* <div className="w3-col s3 w3-right"> */}
           <a
-            href="#where"
-            className="w3-button w3-block w3-black w3-bar-item w3-right w3-mobile"
+            // href="#where"
+            className="w3-button w3-block w3-black w3-hover-teal w3-bar-item w3-right w3-mobile"
             onClick={this.showModal}
           >
             {isLoggedIn ? "USER" : "LOGIN"}
           </a>
+          {/* ################# THE TESTING CODE #################### */}
+          {/* {isLoggedIn ? (
+            <a
+              // href="#where"
+              className="w3-button w3-block w3-black w3-hover-teal w3-bar-item w3-right w3-mobile"
+              onClick={this.showUser}
+            >
+              USER
+            </a>
+          ) : (
+            <a
+              // href="#where"
+              className="w3-button w3-block w3-black w3-hover-teal w3-bar-item w3-right w3-mobile"
+              onClick={this.showModal}
+            >
+              LOGIN
+            </a>
+          )} */}
           <Modal show={this.state.show} handleClose={this.hideModal}>
             <button
               className="w3-button w3-xlarge w3-hover-red w3-display-topright"

@@ -13,6 +13,7 @@ class User extends Component {
   componentDidMount() {
     let username = window.location.pathname.slice(6);
     this.loadUser(username);
+    console.log(username);
   }
 
   loadUser = (username) => {
