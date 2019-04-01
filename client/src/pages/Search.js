@@ -11,7 +11,8 @@ class Search extends Component {
     link: "",
     ageRating: [],
     twitchData: [],
-    videoUrl: ""
+    videoUrl: "",
+    metacritic: "",
   };
 
   // When this component mounts, grab the book with the _id of this.props.match.params.id
@@ -28,26 +29,33 @@ class Search extends Component {
           });
           console.log(data);
 
-          this.setState(
-            {
-              title: res.data.results[0].name,
-              cover: res.data.results[0].image.small_url,
-              overview: res.data.results[0].deck,
-              link: res.data.results[0].site_detail_url,
-              ageRating: data
-
-            })
+          this.setState({
+            title: res.data.results[0].name,
+            cover: res.data.results[0].image.small_url,
+            // overview: res.data.results[0].deck,
+            link: res.data.results[0].site_detail_url,
+            ageRating: data
+          });
           // ELSE add the other information and leave ageRating blank.
         } else {
-          this.setState(
-            {
-              title: res.data.results[0].name,
-              cover: res.data.results[0].image.small_url,
-              overview: res.data.results[0].deck,
-              link: res.data.results[0].site_detail_url,
-            }
-          )
+          this.setState({
+            title: res.data.results[0].name,
+            cover: res.data.results[0].image.small_url,
+            // overview: res.data.results[0].deck,
+            link: res.data.results[0].site_detail_url
+          });
         }
+      })
+      .catch(err => console.log(err));
+
+    API.searchIgdb(game)
+      .then(res => {
+        this.setState({
+          metacritic: res.data[0].aggregated_rating.toFixed(2),
+          overview: res.data[0].summary,
+        });
+        console.log(this.state.metacritic);
+        console.log(this.state.age);
       })
       .catch(err => console.log(err));
 
@@ -59,17 +67,16 @@ class Search extends Component {
             link: elem.channel.url,
             preview: elem.preview.medium,
             channel:
-              "https://player.twitch.tv/?channel=" +
-              elem.channel.display_name
+              "https://player.twitch.tv/?channel=" + elem.channel.display_name
           });
         });
-        console.log(data);
+        // console.log(data);
         this.setState({
           twitchData: data
         });
       })
       .catch(err => console.log(err));
-  };
+  }
 
   showModal = event => {
     event.preventDefault();
@@ -106,10 +113,19 @@ class Search extends Component {
               <div className="w3-col game-desc">
                 <h3 className="heads">Overview</h3>
                 <p>{this.state.overview}</p>
-                <a href={this.state.link} target="_blank" rel="noopener noreferrer"><button className="w3-button w3-round w3-black"><i className="fas fa-info-circle"></i> Get More Info</button></a>
-
+                <a
+                  href={this.state.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className="w3-button w3-round w3-black">
+                    <i className="fas fa-info-circle" /> Get More Info
+                  </button>
+                </a>
                 <form action="/add" method="post">
-                  <button value={this.state.title} name="addWish" className="w3-button w3-round w3-teal"><i className="far fa-list-alt"></i> Add to Wishlist</button>
+                <button value={this.state.title} name="addWish" className="w3-button w3-round w3-teal">
+                  <i className="far fa-list-alt" /> Add to Wishlist
+                </button>
                 </form>
 
                 {/* <p><b>Genres: </b>{this.state.genres}</p> */}
@@ -120,16 +136,22 @@ class Search extends Component {
           <div className="w3-col w3-container w3-third" id="rating">
             <h2 className="header-2 w3-center m3 heads">AGE RATING</h2>
             {/* Age Rating HERE */}
-            {this.state.ageRating.length ? this.state.ageRating.filter(rating => rating.substring(0, 4) === "ESRB") : "ESRB is currently not available."}
+            {this.state.ageRating.length
+              ? this.state.ageRating.filter(
+                  rating => rating.substring(0, 4) === "ESRB"
+                )
+              : "ESRB is currently not available."}
             {/* <img id="age-rating-img" src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/ratings/6/63/ESRB-ver2013_E.png?width=325" alt="age rating" width="75" height="110" /> */}
 
             <h2 className="header-2 w3-center m3 heads">METACRITIC SCORE</h2>
-            N/A
+            {this.state.metacritic}
           </div>
         </div>
 
         <div className="w3-row">
-          <h2 className="header-2 w3-center m3 heads">SEE THE GAME IN ACTION</h2>
+          <h2 className="header-2 w3-center m3 heads">
+            SEE THE GAME IN ACTION
+          </h2>
           <div className="w3-col m12 w3-center" id="twitch">
             {this.state.twitchData.map(twitch => (
               // <a href={twitch.link} target="_blank">
@@ -164,6 +186,32 @@ class Search extends Component {
         {/* <div className="w3-row">
           <h2 className="header-2 w3-center m3">PURCHASE AT</h2>
           <div className="w3-col m12 w3-center" id="purchase">
+            <a
+              href={
+                "https://www.gamestop.com/browse?nav=16k-3-" + this.state.title
+              }
+              target="_blank"
+            >
+              <img
+                src="/images/gamestop.png"
+                style={{ width: 400, height: 100 }}
+              />
+            </a>
+            <br />
+            <br />
+            <a
+              href={
+                "https://www.walmart.com/search/?query=" +
+                this.state.title +
+                "&cat_id=2636"
+              }
+              target="_blank"
+            >
+              <img
+                src="/images/walmart.jpg"
+                style={{ width: 400, height: 100 }}
+              />
+            </a>
           </div>
         </div> */}
       </div>
