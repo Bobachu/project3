@@ -25,6 +25,7 @@ module.exports = {
             })
             .then(function(dbWish) {
                 console.log(req.body.title);
+                console.log(req.user);
                 // If a Note was created successfully, find one User (there's only one) and push the new Note's _id to the User's `notes` array
                 // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
                 // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
