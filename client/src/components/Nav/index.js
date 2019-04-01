@@ -15,7 +15,11 @@ class Nav extends Component {
   };
 
   showModal = () => {
+    if (this.state.loggedin === false){
     this.setState({ show: true });
+    } else {
+      this.props.history.push("/user/" + this.state.username);
+    }
   };
 
   hideModal = () => {
@@ -39,7 +43,7 @@ class Nav extends Component {
       Axios.post("/api/signup", { username, password }).then(data => {
         // console.log(data.data);
         this.setState({
-          username: "",
+          // username: "",
           password: "",
           loggedin: true
         });
@@ -54,7 +58,7 @@ class Nav extends Component {
     Axios.post("/api/login", { username, password }).then(res => {
       // console.log(res.data);
       this.setState({
-        username: "",
+        // username: "",
         password: "",
         loggedin: true
       });
@@ -81,7 +85,7 @@ class Nav extends Component {
           {/* <div className="w3-col s3"> */}
           <a
             href="/"
-            className="w3-button w3-block w3-black w3-bar-item w3-mobile"
+            className="w3-button w3-block w3-black w3-hover-teal w3-margin-right w3-bar-item w3-mobile"
           >
             HOME
           </a>
@@ -109,8 +113,8 @@ class Nav extends Component {
           {/* </div> */}
           {/* <div className="w3-col s3 w3-right"> */}
           <a
-            href="#where"
-            className="w3-button w3-block w3-black w3-bar-item w3-right w3-mobile"
+            // href="#where"
+            className="w3-button w3-block w3-black w3-hover-teal w3-bar-item w3-right w3-mobile"
             onClick={this.showModal}
           >
             {isLoggedIn ? "USER" : "LOGIN"}

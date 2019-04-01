@@ -27,6 +27,10 @@ The goal of this project is to help parents understand video game ratings and sc
   * ESRB rating
 * ~~CommonSenseMedia API~~
   * ~~CommonSenseMedia Ratings~~
+* Pull certain info from the IGDB api to make the information more robust
+  * Summary
+  * Metacritic rating
+
   
 * React for rendering the site
 * Heroku for site deployment
@@ -38,11 +42,8 @@ The goal of this project is to help parents understand video game ratings and sc
 ## Future dev
 
 * Create a user review rating system
-* Link to purchase games.
-* Pull certain info from the IGDB api to make the information more robust
-  * Summary
-  * Genres
-  * Metacritic rating
+* Chat feature for logged in users
+* Purchase games through the website (not just links)
 
 
 #### For help and support
