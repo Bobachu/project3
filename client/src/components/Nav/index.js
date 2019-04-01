@@ -37,7 +37,7 @@ class Nav extends Component {
     } else if (this.state.password.length > 4) {
       const { username, password } = this.state;
       Axios.post("/api/signup", { username, password }).then(data => {
-        console.log(data.data);
+        // console.log(data.data);
         this.setState({
           username: "",
           password: "",
@@ -52,7 +52,7 @@ class Nav extends Component {
     event.preventDefault();
     const { username, password } = this.state;
     Axios.post("/api/login", { username, password }).then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       this.setState({
         username: "",
         password: "",
