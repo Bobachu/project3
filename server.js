@@ -1,5 +1,6 @@
 const express = require("express");
 const passport = require("passport");
+const path = require("path");
 require("./services/passport");
 const requireSignin = passport.authenticate("local", { session: false });
 const requireToken = passport.authenticate("jwt", { session: false });

@@ -12,7 +12,7 @@ router.route("/giantbomb/:game").get((req, res) => {
     .get(
       "https://www.giantbomb.com/api/games/?api_key=a9a2426d7b1ed60e55fb95133e680218e2aa7a7c&format=json&filter=name:" +
         game +
-        "&field_list=image,name,genres,original_game_rating,site_detail_url,deck&sort=original_release_date:desc&limit=1"
+        "&field_list=image,name,site_detail_url,deck&sort=original_release_date:desc&limit=1"
     )
     .then(data => {
       res.json(data.data);
