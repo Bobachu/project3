@@ -52,7 +52,7 @@ class Search extends Component {
         //   // ELSE add the other information and leave ageRating blank.
         // } else {
           this.setState({
-            title: res.data.results[0].name,
+            // title: res.data.results[0].name,
             cover: res.data.results[0].image.small_url,
             // overview: res.data.results[0].deck,
             link: res.data.results[0].site_detail_url
@@ -64,6 +64,7 @@ class Search extends Component {
     API.searchIgdb(game)
       .then(res => {
         this.setState({
+          title: res.data[0].name,
           metacritic: res.data[0].aggregated_rating.toFixed(2),
           overview: res.data[0].summary
         });

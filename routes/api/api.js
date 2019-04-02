@@ -48,7 +48,7 @@ router.route("/twitch/:game").get((req, res) => {
       data:
         'search "' +
         game +
-        '"; fields name,summary,aggregated_rating,age_ratings; where (category = 0 & platforms = [130] & first_release_date > 1420070400)|(category = 0 & platforms = [48] & first_release_date > 1420070400)|(category = 0 & platforms = [49] & first_release_date > 1420070400)|(category = 0 & platforms = [6] & first_release_date > 1420070400);'
+        '"; fields name,summary,aggregated_rating,age_ratings,name; where (category = 0 & platforms = [130] & first_release_date > 1420070400)|(category = 0 & platforms = [48] & first_release_date > 1420070400)|(category = 0 & platforms = [49] & first_release_date > 1420070400)|(category = 0 & platforms = [6] & first_release_date > 1420070400);'
     })
       .then(response => {
         res.json(response.data);
