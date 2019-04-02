@@ -32,6 +32,7 @@ class Nav extends Component {
       [name]: value
     });
   };
+  
   userSignUp = event => {
     console.log("click click boom");
     // Preventing the default behavior of the form submit (which is to refresh the page)
@@ -50,6 +51,7 @@ class Nav extends Component {
       });
     }
     this.hideModal();
+    sessionStorage.setItem('user', this.state.username)
   };
 
   userLogin = event => {
@@ -64,6 +66,7 @@ class Nav extends Component {
       });
       this.hideModal();
     });
+    sessionStorage.setItem('user', this.state.username)
   };
 
   searchesGame = event => {

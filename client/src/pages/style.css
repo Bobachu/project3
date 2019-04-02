@@ -198,3 +198,7 @@ h1 {
 .pic-section {
     text-align: center;
 }
+
+.hide {
+    display: none
+}

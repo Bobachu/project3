@@ -69,7 +69,7 @@ module.exports = {
     // Removes a title from the wishlist
     remove: function (req, res) {
         db.Wishlist
-            .findById({ _id: req.params.id })
+            .findOne({ _id: req.params.id })
             .then(dbWishlist => dbWishlist.remove())
             .then(dbWishlist => res.json(dbWishlist))
             .catch(err => res.status(422).json(err));

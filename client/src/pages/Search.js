@@ -90,7 +90,7 @@ class Search extends Component {
 
   addToWishlist = () => {
     const title = this.state.title;
-    const username = "hello";    
+    const username = sessionStorage.getItem('user');    
     axios.post("/api/wishlists/add", {
       title,
       username
