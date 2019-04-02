@@ -118,22 +118,24 @@ app.get("/api/gamerankings", function(req, res) {
     });
 });
 
-app.get("/api/esrb", function (req, res) {
+app.get("/api/esrb/:game", function (req, res) {
   // First, tell the console what server.js is doing
   console.log("\n***********************************\n" +
     "Grabbing current top games" +
     "\n***********************************\n");
-
-  axios.get("https://www.esrb.org/ratings/search.aspx?searchType=title&titleOrPublisher=zelda").then(function (response) {
-    var $ = cheerio.load(response.data);
-
+ 
+  axios.get("https://www.esrb.org/ratings/search.aspx?searchType=title&titleOrPublisher=" + req.params.game).then(function (response) {
+    let $ = cheerio.load(response.data);
+    let esrbData = [];
     const dataRow = $("tbody tr").eq(0);
 
     const img = dataRow.find("td[data-title=Ratings] img").attr("src");
-    const descriptor = dataRow.find('td[data-title="Content Descriptors"] div').text();
-    console.log(img);
-    console.log(descriptor);
-
+    const descriptor = dataRow.find('td[data-title="Content Descriptors"] div').text().trim();
+    // console.log(img);
+    // console.log(descriptor);
+    esrbData.push(img, descriptor)
+    res.json(esrbData);
+    console.log(req.params);
   });
 });
 

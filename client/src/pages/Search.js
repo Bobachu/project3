@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import "./style.css";
 import API from "../utils/API";
 import Modal from "../components/Modal";
+const axios = require("axios");
 
+var pathArray = window.location.pathname.split("/");
+console.log(pathArray);
 class Search extends Component {
   state = {
     title: "",
@@ -12,7 +15,8 @@ class Search extends Component {
     ageRating: [],
     twitchData: [],
     videoUrl: "",
-    metacritic: ""
+    metacritic: "",
+    esrbdata: []
   };
 
   // When this component mounts, grab the book with the _id of this.props.match.params.id
@@ -85,8 +89,14 @@ class Search extends Component {
         });
       })
       .catch(err => console.log(err));
+
+    axios.get("/api/esrb/" + game).then(res => {
+      const esrb = res.data;
+      this.setState({ esrbdata: esrb });
+      console.log(res.data);
+    });
   };
-  
+
   showModal = event => {
     event.preventDefault();
     const link = event.target.id;
@@ -145,11 +155,15 @@ class Search extends Component {
           <div className="w3-col w3-container w3-third" id="rating">
             <h2 className="header-2 w3-center m3 heads">AGE RATING</h2>
             {/* Age Rating HERE */}
-            {this.state.ageRating.length
-              ? this.state.ageRating.filter(
-                  rating => rating.substring(0, 4) === "ESRB"
-                )
-              : "ESRB is currently not available."}
+            {this.state.esrbdata[1] ? (
+              <div>
+                <img src={this.state.esrbdata[0]} alt="esrbimg" />
+                <p>{this.state.esrbdata[1]}</p>
+              </div>
+            ) : (
+              "ESRB is currently not available."
+            )}
+
             {/* <img id="age-rating-img" src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/ratings/6/63/ESRB-ver2013_E.png?width=325" alt="age rating" width="75" height="110" /> */}
 
             <h2 className="header-2 w3-center m3 heads">METACRITIC SCORE</h2>
@@ -203,6 +217,7 @@ class Search extends Component {
               <img
                 src="/images/gamestop.png"
                 style={{ width: 400, height: 100 }}
+                id="gamestop"
               />
             </a>
             <br />
@@ -218,6 +233,7 @@ class Search extends Component {
               <img
                 src="/images/walmart.jpg"
                 style={{ width: 400, height: 100 }}
+                id="walmart"
               />
             </a>
           </div>

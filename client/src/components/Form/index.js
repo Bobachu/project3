@@ -5,7 +5,7 @@ import React from "react";
 export function Input(props) {
   return (
     <div className="form-group">
-      <input className="form-control w3-input w3-round-large" {...props} />
+      <input className="form-control w3-input w3-round-large gamesearch" {...props} />
     </div>
   );
 }
