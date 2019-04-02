@@ -81,7 +81,7 @@ class Home extends Component {
               below or in the bar at the top of the screen and you can find out
               what the game is about, see the rating, and even see some videos
               of people actually playing the game. You can also scroll to the
-              bottom of the page to see a current list of top games that you can
+              bottom of this page to see a current list of top games that you can
               check out as well!
             </p>
             <div className="w3-container">

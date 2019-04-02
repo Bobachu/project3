@@ -212,7 +212,7 @@ class Search extends Component {
           <div className="w3-col m12 w3-center" id="purchase">
             <a
               href={
-                "https://www.gamestop.com/browse?nav=16k-3-" + this.state.title
+                "https://www.gamestop.com/browse?nav=16k-3-" + this.state.title + ",28zu0"
               }
               target="_blank"
               rel="noopener noreferrer"
