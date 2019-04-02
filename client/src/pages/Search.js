@@ -36,28 +36,28 @@ class Search extends Component {
     API.searchGame(game)
       .then(res => {
         // If there is an age rating, add the age rating into ageRating.
-        if (Array.isArray(res.data.results[0].original_game_rating)) {
-          let data = [];
-          res.data.results[0].original_game_rating.forEach(elem => {
-            data.push(elem.name);
-          });
+        // if (Array.isArray(res.data.results[0].original_game_rating)) {
+        //   let data = [];
+        //   res.data.results[0].original_game_rating.forEach(elem => {
+        //     data.push(elem.name);
+        //   });
 
-          this.setState({
-            title: res.data.results[0].name,
-            cover: res.data.results[0].image.small_url,
-            // overview: res.data.results[0].deck,
-            link: res.data.results[0].site_detail_url,
-            // ageRating: data
-          });
-          // ELSE add the other information and leave ageRating blank.
-        } else {
+        //   this.setState({
+        //     title: res.data.results[0].name,
+        //     cover: res.data.results[0].image.small_url,
+        //     // overview: res.data.results[0].deck,
+        //     link: res.data.results[0].site_detail_url,
+        //     // ageRating: data
+        //   });
+        //   // ELSE add the other information and leave ageRating blank.
+        // } else {
           this.setState({
             title: res.data.results[0].name,
             cover: res.data.results[0].image.small_url,
             // overview: res.data.results[0].deck,
             link: res.data.results[0].site_detail_url
           });
-        }
+        // }
       })
       .catch(err => console.log(err));
 

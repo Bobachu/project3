@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 import "./style.css";
 import { Input, FormBtn } from "../components/Form";
 const axios = require("axios");
@@ -194,9 +196,9 @@ class Home extends Component {
                         <td>{table.rank}</td>
                         <td>{table.rankLastMonth}</td>
                         <td>
-                          <a href={"/search/" + table.title.replace(/:/, "")}>
+                          <Link to={"/search/" + table.title.replace(/:/, "")}>
                             {table.title}
-                          </a>
+                          </Link>
                         </td>
                         <td>{table.publisher}</td>
                       </tr>
