@@ -6,13 +6,14 @@ class User extends Component {
   state = {
     user: "",
     bio: "",
-    wishlist: []
+    wishlist: [],
+    gameTitles: []
   };
 
   componentDidMount() {
     let username = window.location.pathname.slice(6);
     this.loadUser(username);
-    console.log(username);
+    this.test();
   }
 
   loadUser = (username) => {
@@ -21,7 +22,37 @@ class User extends Component {
       .catch(err => console.log(err));
   };
 
-  removeGame = id => {
+  getWish = (id) => {
+    let data = [];
+      API.getWishItem(id)
+      .then(res => data.push(res))
+      .then(this.setState({
+        gameTitles: data
+      }))
+      .catch(err => console.log(err));
+      console.log(this.state.gameTitles);
+    };
+
+  test = () => {
+    this.state.wishlist.forEach(elem => {
+      console.log(elem);
+      this.getWish(elem);
+    });
+  };
+
+  // renderWishlist = (array) => {
+  //   array.forEach(elem => {
+  //     return (
+  //       <tr>
+  //       <td className="title-table">{game}</td>
+  //       <td className="remove-table"><button class="trash-btn" onClick={this.removeGame}><i class="fas fa-trash-alt"></i></button></td>
+  //     </tr>
+  //     )
+  //   });
+  // };
+
+  removeGame = () => {
+    document.getElementById("test").className="hide";
     // API.deleteWishlistItem(id)
     //   .then(res => this.loadWishlist())
     //   .catch(err => console.log(err));
@@ -32,7 +63,7 @@ class User extends Component {
     return (
       <div className="w3-container w3-center">
         <div className="w3-row w3-padding-48 userHeading">
-          <div className="w3-container">
+          <div className="w3-container pic-section">
             {/* User's profile picture */}
             <img className="profile-pic w3-circle" src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEJ6nY4Jb-8SFmi1iR4OnFIGzbMOdECbMKiKU4RqKltU4QY35S'} alt="profile" />
           </div>
@@ -45,7 +76,7 @@ class User extends Component {
             </h4>
             <h1>Username</h1> */}
             <h6>Joined: 03/20/19</h6>
-            <h4>Hello, welcome! Below you can see your wishlist and previously searched games. Thanks for visiting!</h4>
+            <h4>Hello, welcome! Below you can see your wishlist. Thanks for visiting!</h4>
           </div>
         </div>
         <div className="w3-row userItems">
@@ -54,15 +85,18 @@ class User extends Component {
             <table class="w3-table w3-bordered">
 
               {/* Hard coded games in wishlist for preview */}
+
+            {/* {this.state.wishlist.map(id => this.getWishItem(id))} */}
+
               {this.state.wishlist.map(game => {
-                if (!this.state.wishlist.length === 0) {
+                if (this.state.wishlist.length === 0) {
                   return (
-                      <h3>This user needs to add games to their wishlist!</h3>
+                      "This user needs to add games to their wishlist!"
                   )
                 } else {
                 return (
                   <tr>
-                    <td className="title-table">{game}</td>
+                    <td id="test" key={game} className="title-table">{game}</td>
                     <td className="remove-table"><button class="trash-btn" onClick={this.removeGame}><i class="fas fa-trash-alt"></i></button></td>
                   </tr>
                 )

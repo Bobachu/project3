@@ -23,6 +23,10 @@ export default {
     return axios.get("/api/users/" + username)
   },
 
+  getWishItem: function(id) {
+    return axios.get("/api/wishlists/" + id)
+  },
+
 }
 // IDGB API credentials
 // const user-key = "940917f24ab11ddaece60ec17ad01354";

@@ -9,6 +9,9 @@ router.route("/")
 // Matches with "/api/wishlists/:id"
 router.route("/:username")
   .get(UserController.findOne)
-  .put(UserController.update)
+  .put(UserController.update);
+
+router.route("/populated")
+  .get(UserController.findWithWish);
 
 module.exports = router;

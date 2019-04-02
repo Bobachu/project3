@@ -97,6 +97,16 @@ class Search extends Component {
     });
   };
 
+  addToWishlist = () => {
+    const title = this.state.title;
+    const username = sessionStorage.getItem('user');    
+    axios.post("/api/wishlists/add", {
+      title,
+      username
+    }).then(console.log(title))
+    .catch(err => console.log(err))
+  };
+
   showModal = event => {
     event.preventDefault();
     const link = event.target.id;
@@ -130,9 +140,7 @@ class Search extends Component {
                 />
               </div>
               <div className="w3-col game-desc">
-                {/* <h4> */}
                 <h3 className="heads">Overview</h3>
-                {/* </h4> */}
                 <p>{this.state.overview}</p>
                 <a
                   href={this.state.link}
@@ -143,9 +151,11 @@ class Search extends Component {
                     <i className="fas fa-info-circle" /> Get More Info
                   </button>
                 </a>
-                <button className="w3-button w3-round w3-teal">
+                {/* <form action="/api/wishlists/add" method="post"> */}
+                <button onClick={() => this.addToWishlist()}name="addWish" className="w3-button w3-round w3-teal">
                   <i className="far fa-list-alt" /> Add to Wishlist
                 </button>
+                {/* </form> */}
 
                 {/* <p><b>Genres: </b>{this.state.genres}</p> */}
               </div>
@@ -184,6 +194,7 @@ class Search extends Component {
                 src={twitch.preview}
                 alt="Twitch Stream Preview"
                 onClick={this.showModal}
+                key={twitch.channel}
               />
               // </a>
             ))}
@@ -205,7 +216,7 @@ class Search extends Component {
           <iframe src={this.state.videoUrl} width="660" height="371" />
         </Modal>
         {/* Future Dev: Purchase Links Below */}
-        <div className="w3-row">
+        {/* <div className="w3-row">
           <h2 className="header-2 w3-center m3">PURCHASE AT</h2>
           <div className="w3-col m12 w3-center" id="purchase">
             <a
@@ -237,7 +248,7 @@ class Search extends Component {
               />
             </a>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
