@@ -5,15 +5,7 @@ import React from "react";
 export function Input(props) {
   return (
     <div className="form-group">
-      <input className="form-control w3-input w3-round-large" {...props} />
-    </div>
-  );
-}
-
-export function TextArea(props) {
-  return (
-    <div className="form-group">
-      <textarea className="form-control" rows="20" {...props} />
+      <input className="form-control w3-input w3-round-large gamesearch" {...props} />
     </div>
   );
 }

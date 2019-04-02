@@ -9,16 +9,15 @@ export default {
   searchIgdb: function(game) {
     return axios.post("/api/data/igdb/" + game);
   },
+
+  // searchEsrb: function(game) {
+  //   return axios.get("/api/esrb/" + game);
+  // },
   // Searches for streamers playing on Twitch API
   searchTwitch: function(game) {
     // return twitch.get("https://api.twitch.tv/kraken/search/streams?limit=3&query=assassin+creed+odyssey")
     return axios.get("/api/data/twitch/" + game);
   },
-
-  searchIgdb: function(game) {
-    return axios.get("/api/data/igdb/" + game);
-  },
-
   // Get a user and their wishlist?
   loadUser: function(username) {
     return axios.get("/api/users/" + username)

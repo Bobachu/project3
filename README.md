@@ -40,7 +40,7 @@ The goal of this project is to help parents understand video game ratings and sc
 [Mock up and prototype can be viewed here](https://xd.adobe.com/view/fae3345a-eff7-493a-71d4-c97620cdf00e-8cd2/)
 
 ## Future dev
-
+* past searches link
 * Create a user review rating system
 * Chat feature for logged in users
 * Purchase games through the website (not just links)

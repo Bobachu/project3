@@ -77,11 +77,7 @@ class Nav extends Component {
     console.log(this.state.title);
     event.preventDefault();
     this.props.history.push("/search/" + this.state.title);
-    // window.location.assign("/search/" + this.state.title);
     this.setState({ title: "" });
-    // return (
-    //   <Link to={"/search/" + this.state.title} />
-    // )
   };
 
 
@@ -90,15 +86,12 @@ class Nav extends Component {
     return (
       <div className="w3-top">
         <div className="w3-bar w3-row w3-padding w3-black" id="navBar">
-          {/* <div className="w3-col s3"> */}
           <a
             href="/"
             className="w3-button w3-block w3-black w3-hover-teal w3-margin-right w3-bar-item w3-mobile"
           >
             HOME
           </a>
-          {/* </div> */}
-          {/* <div className="w3-col s3" id="navSearch"> */}
           <form onSubmit={this.searchesGame}>
             <Input
               value={this.state.title}
@@ -107,8 +100,6 @@ class Nav extends Component {
               placeholder="Game"
               className="w3-bar-item w3-mobile w3-round-large"
             />
-            {/* </div> */}
-            {/* <div className="w3-col s3"> */}
             <FormBtn
               type="submit"
               className="w3-bar-item w3-mobile"
@@ -118,19 +109,8 @@ class Nav extends Component {
               Search
             </FormBtn>
           </form>
-          {/* </div> */}
-          {/* <div className="w3-col s3 w3-right"> */}
-          {/* <a
-            // href="#where"
-            className="w3-button w3-block w3-black w3-hover-teal w3-bar-item w3-right w3-mobile"
-            onClick={this.showModal}
-          >
-            {isLoggedIn ? "USER" : "LOGIN"}
-          </a> */}
-          {/* ################# THE TESTING CODE #################### */}
           {isLoggedIn ? (
             <Link
-              // href="#where"
               className="w3-button w3-block w3-black w3-hover-teal w3-bar-item w3-right w3-mobile"
               to={'/user/' + this.state.username}
             >
@@ -138,7 +118,6 @@ class Nav extends Component {
             </Link>
           ) : (
             <a
-              // href="#where"
               className="w3-button w3-block w3-black w3-hover-teal w3-bar-item w3-right w3-mobile"
               onClick={this.showModal}
             >
