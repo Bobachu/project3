@@ -28,11 +28,7 @@ class Home extends Component {
     console.log(this.state.title);
     event.preventDefault();
     this.props.history.push("/search/" + this.state.title);
-    // window.location.assign("/search/" + this.state.title);
     this.setState({ title: "" });
-    // return (
-    //   <Link to={"/search/" + this.state.title} />
-    // )
   };
 
   componentDidMount() {
@@ -62,17 +58,11 @@ class Home extends Component {
           }}
           onLoad={this.randomImg}
         >
-          {/* <div className="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
-            <span className="w3-tag">Open from 6am to 5pm</span>
-          </div> */}
           <div className="w3-display-middle w3-center">
             <span className="w3-text-white w3-wide w3-jumbo" id="logoText">
               GameAdvisor
             </span>
           </div>
-          {/* <div className="w3-display-bottomright w3-center w3-padding-large">
-            <span className="w3-text-white">15 Adr street, 5015</span>
-          </div> */}
         </header>
         {/* page info and search bar */}
         <div className="w3-container" id="about">
@@ -102,8 +92,6 @@ class Home extends Component {
                   className="w3-round-large w3-half"
                   id="main-search"
                 />
-                {/* </div> */}
-                {/* <div className="w3-col s3"> */}
                 <FormBtn
                   type="submit"
                   className="w3-quarter"
@@ -138,22 +126,42 @@ class Home extends Component {
                 <i>
                   You can also set parental controls on all modern consoles and
                   even a PC, click the button below for instructions for your
-                  childs system.
+                  system.
                 </i>
               </p>
             </div>
             <div className="w3-center w3-bar">
-              <a href="https://www.esrb.org/about/parentalcontrol-switch.aspx" target="_blank">
-                <button className="w3-button w3-teal w3-ripple parent-button">Nintendo Switch</button>
+              <a
+                href="https://www.esrb.org/about/parentalcontrol-switch.aspx"
+                target="_blank"
+              >
+                <button className="w3-button w3-teal w3-ripple parent-button">
+                  Nintendo Switch
+                </button>
               </a>
-              <a href="https://www.esrb.org/about/parentalcontrol-PlayStation.aspx" target="_blank">
-                <button className="w3-button w3-teal w3-ripple parent-button">Playstation 4</button>
+              <a
+                href="https://www.esrb.org/about/parentalcontrol-PlayStation.aspx"
+                target="_blank"
+              >
+                <button className="w3-button w3-teal w3-ripple parent-button">
+                  Playstation 4
+                </button>
               </a>
-              <a href="https://www.esrb.org/about/parentalcontrol-xbox.aspx" target="_blank">
-                <button className="w3-button w3-teal w3-ripple parent-button">Xbox One</button>
+              <a
+                href="https://www.esrb.org/about/parentalcontrol-xbox.aspx"
+                target="_blank"
+              >
+                <button className="w3-button w3-teal w3-ripple parent-button">
+                  Xbox One
+                </button>
               </a>
-              <a href="https://www.esrb.org/about/parentalcontrol-WindowsPC.aspx" target="_blank">
-                <button className="w3-button w3-teal w3-ripple parent-button">Windows PC</button>
+              <a
+                href="https://www.esrb.org/about/parentalcontrol-WindowsPC.aspx"
+                target="_blank"
+              >
+                <button className="w3-button w3-teal w3-ripple parent-button">
+                  Windows PC
+                </button>
               </a>
             </div>
           </div>

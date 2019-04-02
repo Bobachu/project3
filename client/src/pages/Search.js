@@ -41,7 +41,6 @@ class Search extends Component {
           res.data.results[0].original_game_rating.forEach(elem => {
             data.push(elem.name);
           });
-          console.log(data);
 
           this.setState({
             title: res.data.results[0].name,
@@ -68,7 +67,6 @@ class Search extends Component {
           metacritic: res.data[0].aggregated_rating.toFixed(2),
           overview: res.data[0].summary
         });
-        console.log(this.state.metacritic);
       })
       .catch(err => console.log(err));
 
@@ -83,7 +81,6 @@ class Search extends Component {
               "https://player.twitch.tv/?channel=" + elem.channel.display_name
           });
         });
-        // console.log(data);
         this.setState({
           twitchData: data
         });
@@ -93,7 +90,6 @@ class Search extends Component {
     axios.get("/api/esrb/" + game).then(res => {
       const esrb = res.data;
       this.setState({ esrbdata: esrb });
-      console.log(res.data);
     });
   };
 
@@ -111,7 +107,6 @@ class Search extends Component {
     event.preventDefault();
     const link = event.target.id;
     this.setState({ show: true, videoUrl: link });
-    console.log(link);
   };
 
   hideModal = () => {
@@ -174,7 +169,6 @@ class Search extends Component {
               "ESRB is currently not available."
             )}
 
-            {/* <img id="age-rating-img" src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/ratings/6/63/ESRB-ver2013_E.png?width=325" alt="age rating" width="75" height="110" /> */}
 
             <h2 className="header-2 w3-center m3 heads">METACRITIC SCORE</h2>
             {this.state.metacritic}
@@ -187,7 +181,6 @@ class Search extends Component {
           </h2>
           <div className="w3-col m12 w3-center" id="twitch">
             {this.state.twitchData.map(twitch => (
-              // <a href={twitch.link} target="_blank">
               <img
                 className="twitch-preview"
                 id={twitch.channel}
@@ -196,7 +189,6 @@ class Search extends Component {
                 onClick={this.showModal}
                 key={twitch.channel}
               />
-              // </a>
             ))}
           </div>
         </div>
@@ -215,8 +207,7 @@ class Search extends Component {
           <br />
           <iframe src={this.state.videoUrl} width="660" height="371" />
         </Modal>
-        {/* Future Dev: Purchase Links Below */}
-        {/* <div className="w3-row">
+        <div className="w3-row">
           <h2 className="header-2 w3-center m3">PURCHASE AT</h2>
           <div className="w3-col m12 w3-center" id="purchase">
             <a
@@ -248,7 +239,7 @@ class Search extends Component {
               />
             </a>
           </div>
-        </div> */}
+        </div>
       </div>
     );
   }

@@ -110,7 +110,6 @@ app.get("/api/gamerankings", function(req, res) {
         // In the currently selected element, look at its child elements (i.e., its a-tags),
         // then save the values for any "href" attributes that the child elements may have
         results.push(tr);
-        // console.log(results)
       });
 
       // Log the results once you've looped through each of the elements found with cheerio
@@ -131,11 +130,8 @@ app.get("/api/esrb/:game", function (req, res) {
 
     const img = dataRow.find("td[data-title=Ratings] img").attr("src");
     const descriptor = dataRow.find('td[data-title="Content Descriptors"] div').text().trim();
-    // console.log(img);
-    // console.log(descriptor);
     esrbData.push(img, descriptor)
     res.json(esrbData);
-    console.log(req.params);
   });
 });
 
