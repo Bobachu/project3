@@ -23,8 +23,8 @@ export default {
     return axios.get("/api/users/" + username)
   },
 
-  getWishItem: function(id) {
-    return axios.get("/api/wishlists/" + id)
+  getWishItem: function(_id) {
+    return axios.get("/api/wishlists/" + _id)
   },
 
 }

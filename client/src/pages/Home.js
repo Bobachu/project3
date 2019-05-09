@@ -70,8 +70,8 @@ class Home extends Component {
         <div className="w3-container" id="about">
           <div className="w3-content" style={{ maxWidth: 1300 }}>
             <h5 className="w3-center w3-padding-32">
-              <span className="w3-tag w3-wide heads header-2">
-                About the Site
+              <span className="w3-tag w3-wide heads w3-center header-2">
+                ABOUT THE SITE
               </span>
             </h5>
             <p>
@@ -106,8 +106,8 @@ class Home extends Component {
               </form>
             </div>
             <h5 className="w3-center w3-padding-32">
-              <span className="w3-tag w3-wide heads header-2">
-                Did You Know?
+              <span className="w3-tag w3-wide heads w3-center header-2">
+                DID YOU KNOW?
               </span>
             </h5>
             <div className="w3-panel w3-leftbar w3-light-grey w3-center">
@@ -176,7 +176,7 @@ class Home extends Component {
         <div className="w3-container w3-center" id="topGames">
           <div className="w3-content" style={{ maxWidth: 1300 }}>
             <h5 className="w3-padding-32 heads">
-              <span className="w3-tag w3-wide">Current Top Games</span>
+              <span className="w3-tag w3-wide header-2 ">CURRENT TOP GAMES</span>
             </h5>
 
             <div className=" w3-center w3-container menu w3-padding-48 w3-card w3-center">

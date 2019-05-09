@@ -9,7 +9,7 @@ router.route("/add")
   .post(WishlistController.create);
 
 // Matches with "/api/wishlists/:id"
-router.route("/:id")
+router.route("/:_id")
   .get(WishlistController.findById)
   .put(WishlistController.update)
   .delete(WishlistController.remove);

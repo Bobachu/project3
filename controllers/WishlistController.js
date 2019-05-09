@@ -12,7 +12,7 @@ module.exports = {
     // Finds one item on the Wishlist
     findById: function (req, res) {
         db.Wishlist
-            .find(req.params._id)
+            .findById(req.params._id)
             .then(dbWishlist => res.json(dbWishlist))
             .catch(err => res.status(422).json(err));
     },
