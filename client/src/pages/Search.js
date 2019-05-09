@@ -208,7 +208,7 @@ class Search extends Component {
           <iframe src={this.state.videoUrl} title="video" width="660" height="371" />
         </Modal>
         <div className="w3-row">
-          <h2 className="header-2 w3-center m3">PURCHASE AT</h2>
+          <h2 className="header-2 w3-center m3 heads">PURCHASE AT</h2>
           <div className="w3-col m12 w3-center" id="purchase">
             <a
               href={
