@@ -50,8 +50,3 @@ The goal of this project is to help parents understand video game ratings and sc
 Contact Sarah, Tiffany, Bob, or Paul
 
 Project created and maintained by Sarah, Tiffany, Bob, or Paul
-
-### current breakdown
-* Sarah and Tiffany - backend working on the Mongo DB and API connections
-* Paul - passport and frontend
-* Bob - Frontend and help in other areas

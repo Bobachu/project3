@@ -117,12 +117,12 @@ class Nav extends Component {
               USER
             </Link>
           ) : (
-            <a
+            <button
               className="w3-button w3-block w3-black w3-hover-teal w3-bar-item w3-right w3-mobile"
               onClick={this.showModal}
             >
               LOGIN
-            </a>
+            </button>
           )}
           <Modal show={this.state.show} handleClose={this.hideModal}>
             <button

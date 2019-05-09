@@ -205,7 +205,7 @@ class Search extends Component {
           </button>
           <br />
           <br />
-          <iframe src={this.state.videoUrl} width="660" height="371" />
+          <iframe src={this.state.videoUrl} title="video" width="660" height="371" />
         </Modal>
         <div className="w3-row">
           <h2 className="header-2 w3-center m3">PURCHASE AT</h2>
@@ -215,11 +215,13 @@ class Search extends Component {
                 "https://www.gamestop.com/browse?nav=16k-3-" + this.state.title
               }
               target="_blank"
+              rel="noopener noreferrer"
             >
               <img
                 src="/images/gamestop.png"
                 style={{ width: 400, height: 100 }}
                 id="gamestop"
+                alt="gamestop"
               />
             </a>
             <br />
@@ -231,11 +233,13 @@ class Search extends Component {
                 "&cat_id=2636"
               }
               target="_blank"
+              rel="noopener noreferrer"
             >
               <img
                 src="/images/walmart.jpg"
                 style={{ width: 400, height: 100 }}
                 id="walmart"
+                alt="walmart"
               />
             </a>
           </div>

@@ -134,6 +134,7 @@ class Home extends Component {
               <a
                 href="https://www.esrb.org/about/parentalcontrol-switch.aspx"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <button className="w3-button w3-teal w3-ripple parent-button">
                   Nintendo Switch
@@ -142,6 +143,7 @@ class Home extends Component {
               <a
                 href="https://www.esrb.org/about/parentalcontrol-PlayStation.aspx"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <button className="w3-button w3-teal w3-ripple parent-button">
                   Playstation 4
@@ -150,6 +152,7 @@ class Home extends Component {
               <a
                 href="https://www.esrb.org/about/parentalcontrol-xbox.aspx"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <button className="w3-button w3-teal w3-ripple parent-button">
                   Xbox One
@@ -158,6 +161,7 @@ class Home extends Component {
               <a
                 href="https://www.esrb.org/about/parentalcontrol-WindowsPC.aspx"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <button className="w3-button w3-teal w3-ripple parent-button">
                   Windows PC
