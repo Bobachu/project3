@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-
 import "./style.css";
 import { Input, FormBtn } from "../components/Form";
 const axios = require("axios");
@@ -81,7 +79,7 @@ class Home extends Component {
               below or in the bar at the top of the screen and you can find out
               what the game is about, see the rating, and even see some videos
               of people actually playing the game. You can also scroll to the
-              bottom of this page to see a current list of top games that you can
+              bottom of the page to see a current list of top games that you can
               check out as well!
             </p>
             <div className="w3-container">
@@ -196,9 +194,9 @@ class Home extends Component {
                         <td>{table.rank}</td>
                         <td>{table.rankLastMonth}</td>
                         <td>
-                          <Link to={"/search/" + table.title.replace(/:/, "")}>
+                          <a href={"/search/" + table.title.replace(/:/, "")}>
                             {table.title}
-                          </Link>
+                          </a>
                         </td>
                         <td>{table.publisher}</td>
                       </tr>

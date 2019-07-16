@@ -1,11 +1,10 @@
 const express = require("express");
 const passport = require("passport");
-const path = require("path");
 require("./services/passport");
 const requireSignin = passport.authenticate("local", { session: false });
 const requireToken = passport.authenticate("jwt", { session: false });
 const jwt = require("jsonwebtoken");
-// const path = require("path");
+const path = require("path");
 const config = require("./config");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
@@ -137,7 +136,7 @@ app.get("/api/esrb/:game", function (req, res) {
 });
 
 app.get("*", function(req, res) {
-  res.sendFile(path.resolve(__dirname + "/client/build/index.html"));
+  res.sendFile(path.resolve(__dirname + "/client/public/index.html"));
 });
 
 // Start the server

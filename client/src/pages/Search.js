@@ -36,35 +36,34 @@ class Search extends Component {
     API.searchGame(game)
       .then(res => {
         // If there is an age rating, add the age rating into ageRating.
-        // if (Array.isArray(res.data.results[0].original_game_rating)) {
-        //   let data = [];
-        //   res.data.results[0].original_game_rating.forEach(elem => {
-        //     data.push(elem.name);
-        //   });
+        if (Array.isArray(res.data.results[0].original_game_rating)) {
+          let data = [];
+          res.data.results[0].original_game_rating.forEach(elem => {
+            data.push(elem.name);
+          });
 
-        //   this.setState({
-        //     title: res.data.results[0].name,
-        //     cover: res.data.results[0].image.small_url,
-        //     // overview: res.data.results[0].deck,
-        //     link: res.data.results[0].site_detail_url,
-        //     // ageRating: data
-        //   });
-        //   // ELSE add the other information and leave ageRating blank.
-        // } else {
           this.setState({
-            // title: res.data.results[0].name,
+            title: res.data.results[0].name,
+            cover: res.data.results[0].image.small_url,
+            // overview: res.data.results[0].deck,
+            link: res.data.results[0].site_detail_url,
+            ageRating: data
+          });
+          // ELSE add the other information and leave ageRating blank.
+        } else {
+          this.setState({
+            title: res.data.results[0].name,
             cover: res.data.results[0].image.small_url,
             // overview: res.data.results[0].deck,
             link: res.data.results[0].site_detail_url
           });
-        // }
+        }
       })
       .catch(err => console.log(err));
 
     API.searchIgdb(game)
       .then(res => {
         this.setState({
-          title: res.data[0].name,
           metacritic: res.data[0].aggregated_rating.toFixed(2),
           overview: res.data[0].summary
         });
@@ -206,14 +205,14 @@ class Search extends Component {
           </button>
           <br />
           <br />
-          <iframe title="twitch-embed" src={this.state.videoUrl} width="660" height="371" />
+          <iframe src={this.state.videoUrl} title="video" width="660" height="371" />
         </Modal>
         <div className="w3-row">
           <h2 className="header-2 w3-center m3 heads">PURCHASE AT</h2>
           <div className="w3-col m12 w3-center" id="purchase">
             <a
               href={
-                "https://www.gamestop.com/browse?nav=16k-3-" + this.state.title.replace(/\s|:/g, "+") + ",28zu0"
+                "https://www.gamestop.com/browse?nav=16k-3-" + this.state.title
               }
               target="_blank"
               rel="noopener noreferrer"
@@ -222,7 +221,7 @@ class Search extends Component {
                 src="/images/gamestop.png"
                 style={{ width: 400, height: 100 }}
                 id="gamestop"
-                alt="gasmestop logo"
+                alt="gamestop"
               />
             </a>
             <br />
@@ -235,13 +234,12 @@ class Search extends Component {
               }
               target="_blank"
               rel="noopener noreferrer"
-
             >
               <img
                 src="/images/walmart.jpg"
                 style={{ width: 400, height: 100 }}
                 id="walmart"
-                alt="walmart logo"
+                alt="walmart"
               />
             </a>
           </div>
